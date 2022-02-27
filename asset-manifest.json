@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/participatory-bar-chart/static/css/main.b5f15973.chunk.css",
+    "main.js": "/participatory-bar-chart/static/js/main.24e21eb5.chunk.js",
+    "main.js.map": "/participatory-bar-chart/static/js/main.24e21eb5.chunk.js.map",
+    "runtime-main.js": "/participatory-bar-chart/static/js/runtime-main.3d76827a.js",
+    "runtime-main.js.map": "/participatory-bar-chart/static/js/runtime-main.3d76827a.js.map",
+    "static/js/2.be1296c1.chunk.js": "/participatory-bar-chart/static/js/2.be1296c1.chunk.js",
+    "static/js/2.be1296c1.chunk.js.map": "/participatory-bar-chart/static/js/2.be1296c1.chunk.js.map",
+    "static/js/3.2ea27224.chunk.js": "/participatory-bar-chart/static/js/3.2ea27224.chunk.js",
+    "static/js/3.2ea27224.chunk.js.map": "/participatory-bar-chart/static/js/3.2ea27224.chunk.js.map",
+    "index.html": "/participatory-bar-chart/index.html",
+    "static/css/main.b5f15973.chunk.css.map": "/participatory-bar-chart/static/css/main.b5f15973.chunk.css.map",
+    "static/js/2.be1296c1.chunk.js.LICENSE.txt": "/participatory-bar-chart/static/js/2.be1296c1.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3d76827a.js",
+    "static/js/2.be1296c1.chunk.js",
+    "static/css/main.b5f15973.chunk.css",
+    "static/js/main.24e21eb5.chunk.js"
+  ]
+}
