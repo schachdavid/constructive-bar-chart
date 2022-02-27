@@ -1,0 +1,8 @@
+.bar {
+  fill: black;
+  stroke: none;
+}
+
+.ghostBar {
+  fill: rgb(216, 216, 216);
+}

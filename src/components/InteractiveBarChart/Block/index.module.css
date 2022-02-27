@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.block {
+  background-color: black;
+  height: 100%;
+}
+
+.label {
+  margin-left: 6px;
+}
