@@ -13,6 +13,7 @@ input[type="reset"] {
 .container {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .toolsContainer {

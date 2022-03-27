@@ -5,6 +5,7 @@ import MouseBackEnd from "react-dnd-mouse-backend";
 
 import cn from "./index.module.css";
 import { ChartPresenter } from "../ChartPresenter";
+import { Swoopy } from "../Swoopy";
 import { Chart, YAxis } from "../MinimalCharts";
 import { useBlocks } from "./useBlocks";
 import { Block } from "./Block";
@@ -33,6 +34,7 @@ export const InteractiveBarChart = ({ config }) => {
   return (
     <DndProvider backend={MouseBackEnd}>
       <div className={cn.container}>
+        <Swoopy/>
         <ChartPresenter title={config.title}>
           <Chart
             getX={(d) => d[config.xKey]}
