@@ -2,39 +2,12 @@ import React, { useEffect, useMemo } from "react";
 import cn from "./index.module.css";
 import { scaleBand } from "d3-scale";
 import { useDrop } from "react-dnd";
-import { useDrag } from "react-dnd";
 
-import { cx, updateExtent } from "../../../utils";
-import { dndType } from "../config";
+import { updateExtent } from "../../../utils";
+import { blockDndType } from "../config";
+import { Block, Placeholder } from "../Block";
 
-const padding = 0.5;
-
-const Block = ({ className, barWidth, scaleX, height, yShift, removeItem }) => {
-  const [, drag] = useDrag(() => {
-    return {
-      type: dndType,
-      item: () => {
-        removeItem();
-        return { height, width: barWidth };
-      },
-      end: (item, monitor) => {
-        const dropResult = monitor.getDropResult();
-        console.log("dropped", dropResult);
-      },
-    };
-  }, [removeItem]);
-  return (
-    <rect
-      ref={drag}
-      className={cx(cn.bar, className)}
-      style={{ cursor: "grab" }}
-      height={height - padding * 2}
-      width={barWidth || scaleX.bandwidth()}
-      x={barWidth ? scaleX.bandwidth() / 2 - barWidth / 2 : null}
-      y={-yShift - padding}
-    />
-  );
-};
+const padding = 1;
 
 const Bar = ({
   x,
@@ -48,7 +21,7 @@ const Bar = ({
 }) => {
   const [{ item, isOver }, drop] = useDrop(
     () => ({
-      accept: dndType,
+      accept: blockDndType,
       drop: (item) => addItem(item.height, x),
       collect: (monitor) => ({
         isOver: monitor.isOver(),
@@ -60,22 +33,21 @@ const Bar = ({
 
   const blocks = items.reduce(
     (prev, item, i) => {
+      const isTop = i === items.length - 1;
       const yShift = prev.yShift + item;
       return {
         yShift,
         renderedBlocks: [
           ...prev.renderedBlocks,
           <Block
+            isTop={!isOver && isTop}
             key={i}
             className={className}
             barWidth={barWidth}
             height={item}
             scaleX={scaleX}
             yShift={yShift}
-            removeItem={() => {
-              console.log("ren");
-              removeItem(i, x);
-            }}
+            removeItem={() => removeItem(i, x)}
           />,
         ],
       };
@@ -84,7 +56,7 @@ const Bar = ({
   );
 
   return (
-    <g transform={`translate(${scaleX(x) + 10},0)`}>
+    <g transform={`translate(${scaleX(x)},0)`}>
       <rect
         ref={drop}
         height={scaleY.range()[1]}
@@ -92,14 +64,23 @@ const Bar = ({
         fill="rgba(0,0,0,0)"
       />
       <g key={x} transform={`translate(0,${scaleY(scaleY.domain()[1])})`}>
+        {!isOver && blocks.renderedBlocks.length === 0 && (
+          <Placeholder
+            barWidth={barWidth}
+            scaleX={scaleX}
+            className={cn.placeholder}
+            yShift={-4}
+          />
+        )}
         {blocks.renderedBlocks}
         {isOver && item && (
-          <rect
-            className={cx(cn.bar, cn.ghostBar, className)}
+          <Block
+            isTop={true}
+            className={cn.ghostBar}
+            barWidth={barWidth}
             height={item.height - padding * 2}
-            width={barWidth || scaleX.bandwidth()}
-            x={barWidth ? scaleX.bandwidth() / 2 - barWidth / 2 : null}
-            y={-blocks.yShift - padding - item.height}
+            scaleX={scaleX}
+            yShift={blocks.yShift + item.height - padding}
           />
         )}
         <text
@@ -107,6 +88,7 @@ const Bar = ({
           alignmentBaseline="central"
           x={scaleX.bandwidth() / 2}
           y={20}
+          style={{ userSelect: "none" }}
         >
           {x}
         </text>

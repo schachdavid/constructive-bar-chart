@@ -1,1 +1,2 @@
-export const dndType = "block";
+export const blockDndType = "block";
+export const datasetDndType = "dataset";

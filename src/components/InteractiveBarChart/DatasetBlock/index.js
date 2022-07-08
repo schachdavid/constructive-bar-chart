@@ -1,7 +1,8 @@
 import { useDrag } from "react-dnd";
 import React from "react";
+import { useDrop } from "react-dnd";
 
-import { blockDndType } from "../config";
+import { datasetDndType } from "../config";
 import cn from "./index.module.css";
 import { cx } from "../../../utils";
 
@@ -10,30 +11,52 @@ const padding = 1;
 const getXStretch = (barWidth) => barWidth / 5;
 const getYStretch = (barWidth) => barWidth / 4;
 
-export const Placeholder = ({ barWidth, className, scaleX, yShift=0 }) => {
+export const DatasetPlaceholder = ({
+  barWidth,
+  className,
+  scaleX,
+  yShift = 0,
+  onDrop,
+}) => {
+  const [{ item, isOver }, drop] = useDrop(
+    () => ({
+      accept: datasetDndType,
+      drop: (item) => onDrop(item),
+      collect: (monitor) => ({
+        isOver: monitor.isOver(),
+        item: monitor.getItem(),
+      }),
+    }),
+    [onDrop]
+  );
+
   const width = barWidth;
   const xStretch = getXStretch(barWidth);
   const yStretch = getYStretch(barWidth);
 
   return (
-    <g
-      transform={`translate(${
-        barWidth && scaleX ? scaleX.bandwidth() / 2 - barWidth / 2 : 0
-      }, ${yShift})`}
-      className={className}
-    >
-      <path
-        className={cx(className)}
-        d={`M0 0 L${width} 0  L${
-          width + xStretch
-        } ${-yStretch} L${xStretch} ${-yStretch} Z`}
-        shapeRendering="crispEdges"
-      />
-    </g>
+    <div ref={drop} className={cn.placeholderContainer}>
+      <svg height={25} width={barWidth + 25}>
+        <g
+          transform={`translate(${
+            barWidth && scaleX ? scaleX.bandwidth() / 2 - barWidth / 2 : 0
+          }, ${yShift})`}
+          className={className}
+        >
+          <path
+            className={cx(className)}
+            d={`M0 0 L${width} 0  L${
+              width + xStretch
+            } ${-yStretch} L${xStretch} ${-yStretch} Z`}
+            shapeRendering="crispEdges"
+          />
+        </g>
+      </svg>
+    </div>
   );
 };
 
-export const StaticBlock = React.forwardRef(
+export const StaticDatasetBlock = React.forwardRef(
   (
     {
       className,
@@ -43,6 +66,7 @@ export const StaticBlock = React.forwardRef(
       yShift = 0,
       isTop,
       wrapSvg,
+      dataset,
     },
     ref
   ) => {
@@ -82,6 +106,9 @@ export const StaticBlock = React.forwardRef(
             shapeRendering="crispEdges"
           />
         )}
+        <foreignObject x="0" y="0" width={width} height={height}>
+          <div className={cn.title}>{dataset?.title}</div>
+        </foreignObject>
       </g>
     );
 
@@ -95,7 +122,7 @@ export const StaticBlock = React.forwardRef(
   }
 );
 
-export const Block = ({
+export const DatasetBlock = ({
   className,
   barWidth,
   scaleX,
@@ -104,19 +131,20 @@ export const Block = ({
   removeItem,
   isTop,
   wrapSvg,
+  dataset,
 }) => {
   const [, drag] = useDrag(() => {
     return {
-      type: blockDndType,
+      type: datasetDndType,
       item: () => {
         if (removeItem) removeItem();
-        return { height, width: barWidth };
+        return {...dataset, height, width: barWidth };
       },
     };
   }, [removeItem, barWidth]);
 
   return (
-    <StaticBlock
+    <StaticDatasetBlock
       ref={drag}
       wrapSvg={wrapSvg}
       className={className}
@@ -126,6 +154,7 @@ export const Block = ({
       yShift={yShift}
       removeItem={removeItem}
       isTop={isTop}
+      dataset={dataset}
     />
   );
 };

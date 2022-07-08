@@ -1,5 +1,9 @@
 import { useDragLayer } from "react-dnd";
-import { dndType } from "../config";
+import { blockDndType, datasetDndType } from "../config";
+import { StaticBlock } from "../Block";
+import cn from "./index.module.css";
+import { StaticDatasetBlock } from "../DatasetBlock";
+
 const layerStyles = {
   position: "fixed",
   pointerEvents: "none",
@@ -9,6 +13,7 @@ const layerStyles = {
   width: "100%",
   height: "100%",
 };
+
 function getItemStyles(initialOffset, currentOffset) {
   if (!initialOffset || !currentOffset) {
     return {
@@ -23,6 +28,7 @@ function getItemStyles(initialOffset, currentOffset) {
     WebkitTransform: transform,
   };
 }
+
 export const CustomDragLayer = (props) => {
   const { itemType, isDragging, item, initialOffset, currentOffset } =
     useDragLayer((monitor) => ({
@@ -34,15 +40,27 @@ export const CustomDragLayer = (props) => {
     }));
   function renderItem() {
     switch (itemType) {
-      case dndType:
-        return (
-          <div
-            style={{
-              height: item.height,
-              width: item.width,
-              backgroundColor: "black",
-              boxShadow: "5px 5px 15px 5px rgba(0,0,0,0.25)",
-            }}
+      case blockDndType:
+        return (      
+          <StaticBlock
+            className={cn.container}
+            isTop={true}
+            barWidth={item.width}
+            height={item.height}
+            yShift={-25}
+            wrapSvg={true}
+          />
+        );
+        case datasetDndType:
+        return (      
+          <StaticDatasetBlock
+            className={cn.container}
+            isTop={true}
+            barWidth={item.width}
+            height={item.height}
+            yShift={-25}
+            wrapSvg={true}
+            dataset={item}
           />
         );
       default:

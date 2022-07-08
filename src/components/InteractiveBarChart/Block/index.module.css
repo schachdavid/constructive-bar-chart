@@ -1,14 +1,20 @@
-.container {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
+.bar {
+  fill: #565656;
+  stroke: none;
 }
 
-.block {
-  background-color: black;
-  height: 100%;
+.rightSide {
+  fill: #383838;
 }
 
-.label {
-  margin-left: 6px;
+.top {
+  fill: #787878;
+}
+
+.ghostBar {
+  opacity: 0.5;
+}
+
+.svgWrapper {
+  overflow: visible;
 }

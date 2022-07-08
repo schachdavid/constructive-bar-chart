@@ -9,7 +9,7 @@ export const Chart = ({
   children,
   height = 200,
   width = 600,
-  margin = [30, 30, 45, 70],
+  margin = [30, 30, 45, 30],
 }) => {
   const [yExtent, setYExtent] = useState([0, 0]);
   const [xExtent, setXExtent] = useState();
