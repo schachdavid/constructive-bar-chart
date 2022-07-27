@@ -1,0 +1,29 @@
+.bar {
+  fill: #565656;
+  stroke: none;
+}
+
+.rightSide {
+  fill: #383838;
+}
+
+.top {
+  fill: #787878;
+}
+
+.ghostBar {
+  opacity: 0.5;
+}
+
+.svgWrapper {
+  overflow: visible;
+}
+
+.padding {
+  fill: #d9d9d9;
+}
+
+.placeholder {
+  opacity: 0.5;
+  fill: #787878;
+}

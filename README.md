@@ -1,1 +1,0 @@
-# Particpatory Bar Chart
