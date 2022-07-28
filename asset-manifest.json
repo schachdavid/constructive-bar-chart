@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/constructive-bar-chart/static/css/main.70a9a7f5.chunk.css",
-    "main.js": "/constructive-bar-chart/static/js/main.df7743f1.chunk.js",
-    "main.js.map": "/constructive-bar-chart/static/js/main.df7743f1.chunk.js.map",
+    "main.css": "/constructive-bar-chart/static/css/main.d73359fe.chunk.css",
+    "main.js": "/constructive-bar-chart/static/js/main.3b492fa5.chunk.js",
+    "main.js.map": "/constructive-bar-chart/static/js/main.3b492fa5.chunk.js.map",
     "runtime-main.js": "/constructive-bar-chart/static/js/runtime-main.2711a188.js",
     "runtime-main.js.map": "/constructive-bar-chart/static/js/runtime-main.2711a188.js.map",
-    "static/js/2.f3a1514b.chunk.js": "/constructive-bar-chart/static/js/2.f3a1514b.chunk.js",
-    "static/js/2.f3a1514b.chunk.js.map": "/constructive-bar-chart/static/js/2.f3a1514b.chunk.js.map",
+    "static/js/2.dac112d1.chunk.js": "/constructive-bar-chart/static/js/2.dac112d1.chunk.js",
+    "static/js/2.dac112d1.chunk.js.map": "/constructive-bar-chart/static/js/2.dac112d1.chunk.js.map",
     "static/js/3.6741423a.chunk.js": "/constructive-bar-chart/static/js/3.6741423a.chunk.js",
     "static/js/3.6741423a.chunk.js.map": "/constructive-bar-chart/static/js/3.6741423a.chunk.js.map",
     "index.html": "/constructive-bar-chart/index.html",
-    "static/css/main.70a9a7f5.chunk.css.map": "/constructive-bar-chart/static/css/main.70a9a7f5.chunk.css.map",
-    "static/js/2.f3a1514b.chunk.js.LICENSE.txt": "/constructive-bar-chart/static/js/2.f3a1514b.chunk.js.LICENSE.txt",
+    "static/css/main.d73359fe.chunk.css.map": "/constructive-bar-chart/static/css/main.d73359fe.chunk.css.map",
+    "static/js/2.dac112d1.chunk.js.LICENSE.txt": "/constructive-bar-chart/static/js/2.dac112d1.chunk.js.LICENSE.txt",
     "static/media/chevron-down.89bc78bb.svg": "/constructive-bar-chart/static/media/chevron-down.89bc78bb.svg",
     "static/media/chevron-up.43cdd991.svg": "/constructive-bar-chart/static/media/chevron-up.43cdd991.svg",
     "static/media/circle-check-mark.f1b3637e.svg": "/constructive-bar-chart/static/media/circle-check-mark.f1b3637e.svg",
@@ -21,8 +21,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.2711a188.js",
-    "static/js/2.f3a1514b.chunk.js",
-    "static/css/main.70a9a7f5.chunk.css",
-    "static/js/main.df7743f1.chunk.js"
+    "static/js/2.dac112d1.chunk.js",
+    "static/css/main.d73359fe.chunk.css",
+    "static/js/main.3b492fa5.chunk.js"
   ]
 }
