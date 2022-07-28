@@ -2,7 +2,12 @@ import React, { useContext, useEffect, useMemo } from "react";
 import cn from "./index.module.css";
 import { scaleBand } from "d3-scale";
 
-import { cx, updateExtent } from "../../../utils";
+import {
+  cx,
+  fieldsToBlockSums,
+  formatNumberWithSuffix,
+  updateExtent,
+} from "../../../utils";
 import { EMPTY_DATASET } from "../../../constants";
 
 import { Context } from "../Context";
@@ -11,13 +16,21 @@ import { ReactComponent as CheckMarkIcon } from "../../../static-assets/icons/ci
 import { ReactComponent as ChevronUp } from "../../../static-assets/icons/chevron-up.svg";
 import { ReactComponent as ChevronDown } from "../../../static-assets/icons/chevron-down.svg";
 
-const getLabelFontsize = (bandwidth, length) => {
-  if (length > 20) return (bandwidth / length) * 3.5;
-  if (length > 35) return (bandwidth / length) * 4.5;
-  return (bandwidth / length) * 2;
-};
+const FONT_ASPECT_RATIO = 85 / 50;
 
-const Label = ({ label, fontSize, correctionFeedback }) => {
+function getMaxFontSizeForWidth(bandwidth, length) {
+  return Math.round((bandwidth / length) * FONT_ASPECT_RATIO);
+}
+
+const Label = ({
+  label,
+  fontSize,
+  correctionFeedback,
+  allCorrect,
+  absoluteValue,
+  unit,
+  labelValueFontSize,
+}) => {
   // normal label
   if (correctionFeedback == null)
     return (
@@ -28,6 +41,29 @@ const Label = ({ label, fontSize, correctionFeedback }) => {
         }}
       >
         {label}
+      </div>
+    );
+
+  // label with absolute values
+  if (allCorrect)
+    return (
+      <div className={cn.label}>
+        <div
+          style={{
+            fontSize,
+          }}
+        >
+          {label}
+        </div>
+
+        <div
+          className={cn.labelValue}
+          style={{
+            fontSize: labelValueFontSize,
+          }}
+        >
+          {formatNumberWithSuffix(absoluteValue, true) + " " + unit}
+        </div>
       </div>
     );
 
@@ -83,10 +119,7 @@ const Label = ({ label, fontSize, correctionFeedback }) => {
   );
 };
 
-export const InteractiveBars = ({
-  barWidth,
-  ...props
-}) => {
+export const InteractiveBars = ({ barWidth, ...props }) => {
   const {
     fields,
     setFields,
@@ -114,8 +147,7 @@ export const InteractiveBars = ({
 
   const correctionFeedback = useMemo(() => {
     if (!solution) return Array(5);
-    const current = fields.map((d) => d.reduce((a, b) => a + b, 0) * 2);
-    return current.map((d, i) => d - solution[i]);
+    return fieldsToBlockSums(fields).map((d, i) => d - solution[i]);
   }, [fields, solution]);
 
   const removeBlocks = (iField, iBlock) => {
@@ -126,9 +158,26 @@ export const InteractiveBars = ({
   };
 
   const labelFontsize = useMemo(() => {
+    if (!rawDataset) return;
     const maxLabelLength = Math.max(...dataset.data.map((d) => d.label.length));
-    return getLabelFontsize(scaleX.bandwidth(), maxLabelLength);
-  }, [dataset.data, scaleX]);
+    return getMaxFontSizeForWidth(
+      scaleX.bandwidth(),
+      Math.min(22, maxLabelLength)
+    );
+  }, [dataset.data, rawDataset, scaleX]);
+
+  const labelValueFontSize = useMemo(() => {
+    if (!rawDataset) return;
+    const maxValue =
+      formatNumberWithSuffix(
+        Math.max(...dataset.data.map((d) => d.value)),
+        true
+      ) +
+      " " +
+      dataset.unit;
+    const maxValueLength = maxValue.length + 1;
+    return getMaxFontSizeForWidth(scaleX.bandwidth(), maxValueLength);
+  }, [dataset.data, dataset.unit, rawDataset, scaleX]);
 
   return (
     <g>
@@ -146,10 +195,14 @@ export const InteractiveBars = ({
         >
           {rawDataset != null && (
             <Label
+              allCorrect={correctionFeedback.every((d) => d === 0)}
               key={i}
               label={d.label}
+              unit={dataset.unit}
+              absoluteValue={d.value}
               correctionFeedback={correctionFeedback[i]}
               fontSize={labelFontsize}
+              labelValueFontSize={labelValueFontSize}
             />
           )}
         </InteractiveBar>

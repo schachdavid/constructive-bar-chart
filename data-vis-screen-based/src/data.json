@@ -160,11 +160,11 @@
   {
     "id": "214254223626",
     "title": "Wie ist das Vermögen in der deutschen Bevölkerung verteilt?",
-    "unit": "% des Gesamtvermögens",
+    "unit": "% allen Vermögens",
     "source": "bpb",
     "data": [
       {
-        "label": "Vermögens- schwächste 20% der Bevölkerung",
+        "label": "Vermögensschwächste 20% der Bevölkerung",
         "value": 0
       },
       {
@@ -180,7 +180,7 @@
         "value": 19.2
       },
       {
-        "label": "Vermögens- stärkste 20% der Bevölkerung",
+        "label": "Vermögensstärkste 20% der Bevölkerung",
         "value": 75.6
       }
     ],
@@ -261,6 +261,150 @@
         1,
         5,
         19
+      ]
+    ]
+  },
+  {
+    "id": "12341234",
+    "title": "Woraus wurde 2005 in Deutschland der Strom erzeugt?",
+    "unit": "kwH",
+    "source": "AGEB",
+    "data": [
+      {
+        "label": "Fossile Brennstoffe",
+        "value": 372.3
+      },
+      {
+        "label": "Kernenergie",
+        "value": 163
+      },
+      {
+        "label": "Windkraft",
+        "value": 27.8
+      },
+      {
+        "label": "Photovoltaik",
+        "value": 1.3
+      },
+      {
+        "label": "Übrige",
+        "value": 58.3
+      }
+    ],
+    "solutions": [
+      [
+        14,
+        6,
+        1,
+        0,
+        2
+      ],
+      [
+        13,
+        6,
+        1,
+        0,
+        2
+      ],
+      [
+        18,
+        8,
+        1,
+        0,
+        3
+      ],
+      [
+        12,
+        5,
+        1,
+        0,
+        2
+      ],
+      [
+        16,
+        7,
+        1,
+        0,
+        3
+      ],
+      [
+        15,
+        7,
+        1,
+        0,
+        2
+      ],
+      [
+        11,
+        5,
+        1,
+        0,
+        2
+      ],
+      [
+        17,
+        7,
+        1,
+        0,
+        3
+      ]
+    ]
+  },
+  {
+    "id": "000000000",
+    "title": "Woraus wurde 2021 in Deutschland der Strom erzeugt?",
+    "unit": "kwH",
+    "source": "AGEB",
+    "data": [
+      {
+        "label": "Fossile Brennstoffe",
+        "value": 256.4
+      },
+      {
+        "label": "Kernenergie",
+        "value": 69
+      },
+      {
+        "label": "Windkraft",
+        "value": 117.7
+      },
+      {
+        "label": "Photovoltaik",
+        "value": 49
+      },
+      {
+        "label": "Übrige",
+        "value": 92.4
+      }
+    ],
+    "solutions": [
+      [
+        11,
+        3,
+        5,
+        2,
+        4
+      ],
+      [
+        10,
+        3,
+        5,
+        2,
+        4
+      ],
+      [
+        12,
+        3,
+        5,
+        2,
+        4
+      ],
+      [
+        13,
+        4,
+        6,
+        2,
+        5
       ]
     ]
   }

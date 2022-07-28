@@ -1,5 +1,7 @@
-import { ReactComponent as MoneyIcon } from "./static-assets/money-icon.svg";
-import { ReactComponent as VirusIcon } from "./static-assets/virus-icon.svg";
+import { ReactComponent as MoneyIcon } from "./static-assets/icons/money.svg";
+import { ReactComponent as VirusIcon } from "./static-assets/icons/virus.svg";
+import { ReactComponent as EnergyProduceIcon } from "./static-assets/icons/energy-produce.svg";
+
 import data from "./data.json";
 
 const groups = [
@@ -12,6 +14,11 @@ const groups = [
     title: "COVID-19 Pandemie",
     icon: <VirusIcon />,
     datasets: ["2079325172", "147222245792"],
+  },
+  {
+    title: "Stromerzeugung",
+    icon: <EnergyProduceIcon />,
+    datasets: ["12341234", "000000000"],
   },
 ];
 

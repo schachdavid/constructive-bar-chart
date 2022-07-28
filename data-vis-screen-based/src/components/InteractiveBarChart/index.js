@@ -13,7 +13,10 @@ import { DatasetBlock, DatasetPlaceholder } from "./DatasetBlock";
 import { EMPTY_DATASET } from "../../constants";
 import { Context, ContextProvider } from "./Context";
 import { MainDisplay } from "./MainDisplay";
+import { useWindowWidth } from "../../hooks/useWindowWidth";
+
 import cn from "./index.module.css";
+import { fieldsToBlockSums } from "../../utils";
 
 function findDataset(availableDatasets, id) {
   for (const group of availableDatasets) {
@@ -23,14 +26,18 @@ function findDataset(availableDatasets, id) {
   }
 }
 
-function getError(solution, fields) {
-  return solution.reduce((prev, cur, i) => prev + Math.abs(cur - fields[i]), 0);
+function getError(solution, blockSums) {
+  return solution.reduce(
+    (prev, cur, i) => prev + Math.abs(cur - blockSums[i]),
+    0
+  );
 }
 
 function findClosestSolution(solutions, fields) {
+  const blockSums = fieldsToBlockSums(fields);
   return solutions.reduce(
     (bestSolution, solution) => {
-      const error = getError(solution, fields);
+      const error = getError(solution, blockSums);
       if (bestSolution.error == null || error < bestSolution.error) {
         return { error, solution };
       }
@@ -61,6 +68,8 @@ const Content = () => {
     [height]
   );
 
+  const windowWidth = useWindowWidth();
+
   const scaledBlockSize = Math.min(height / 7, dimensions.width / 7);
 
   const removeAvailableBlock = (i) => {
@@ -84,6 +93,18 @@ const Content = () => {
     datasetToHide.hidden = false;
     setAvailableDatasets([...availableDatasets]);
   };
+
+  const isMobile = windowWidth <= 768;
+
+  if (isMobile)
+    return (
+      <div className={cn.noMobileContainer}>
+        <div className={cn.noMobileMessage}>
+          Seite nicht verfügbar für mobile Endgeräte oder schmale
+          Browser-Fenster.
+        </div>
+      </div>
+    );
 
   return (
     <div className={cn.container}>

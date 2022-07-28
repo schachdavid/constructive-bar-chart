@@ -1,4 +1,5 @@
 .label {
+  position: relative;
   text-align: center;
   box-sizing: border-box;
   padding: 0 1rem;
@@ -73,4 +74,9 @@
 .openBlockTopNumber {
   position: relative;
   bottom: 8px;
+}
+
+.labelValue {
+  position: absolute;
+  top: 35px;
 }
