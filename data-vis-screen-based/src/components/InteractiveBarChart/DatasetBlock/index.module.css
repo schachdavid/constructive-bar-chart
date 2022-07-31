@@ -35,6 +35,7 @@
   user-select: none;
   padding: 0.4rem;
   box-sizing: border-box;
+  hyphens: auto;
 }
 
 .ghostBlock {

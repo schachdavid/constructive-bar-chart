@@ -8,7 +8,7 @@ import {
   formatNumberWithSuffix,
   updateExtent,
 } from "../../../utils";
-import { EMPTY_DATASET } from "../../../constants";
+import { EMPTY_DATASET, FONT_ASPECT_RATIO } from "../../../constants";
 
 import { Context } from "../Context";
 import { InteractiveBar } from "../Bar";
@@ -16,10 +16,10 @@ import { ReactComponent as CheckMarkIcon } from "../../../static-assets/icons/ci
 import { ReactComponent as ChevronUp } from "../../../static-assets/icons/chevron-up.svg";
 import { ReactComponent as ChevronDown } from "../../../static-assets/icons/chevron-down.svg";
 
-const FONT_ASPECT_RATIO = 85 / 50;
 
 function getMaxFontSizeForWidth(bandwidth, length) {
-  return Math.round((bandwidth / length) * FONT_ASPECT_RATIO);
+  const fontSize = Math.round((bandwidth / length) * FONT_ASPECT_RATIO)
+  return  Math.min(fontSize, 15);
 }
 
 const Label = ({

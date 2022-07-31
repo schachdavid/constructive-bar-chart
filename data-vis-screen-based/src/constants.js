@@ -9,3 +9,6 @@ export const EMPTY_DATASET = {
 };
 
 export const BLOCK_PADDING = 1;
+
+
+export const FONT_ASPECT_RATIO = 85 / 50;

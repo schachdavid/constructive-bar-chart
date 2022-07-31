@@ -58,11 +58,11 @@
     {
         "id": "214254223626",
         "title": "Wie ist das Vermögen in der deutschen Bevölkerung verteilt?",     
-        "unit": "% des Gesamtvermögens",
+        "unit": "% allen Vermögens",
         "source": "bpb",
         "data": [
             {
-                "label": "Vermögens- schwächste 20% der Bevölkerung",
+                "label": "Vermögensschwächste 20% der Bevölkerung",
                 "value": 0
             },
             {
@@ -78,14 +78,15 @@
                 "value": 19.2
             },
             {
-                "label": "Vermögens- stärkste 20% der Bevölkerung",
+                "label": "Vermögensstärkste 20% der Bevölkerung",
                 "value": 75.6
             }
         ]
     },
     {
         "id": "12341234",
-        "title": "Woraus wurde 2005 in Deutschland der Strom erzeugt?",     
+        "title": "Woraus wurde 2005 in Deutschland der Strom erzeugt?",
+        "unit": "kwH",    
         "source": "AGEB",
         "data": [
             {
@@ -137,5 +138,119 @@
                 "value": 92.4
             }
         ]
+    },
+    {
+        "id": "1",
+        "title": "Wie hat sich die Arbeitslosenquote in den USA entwickelt?",     
+        "unit": "% Arbeitslose",
+        "source": "IMF",
+        "data": [
+            {
+                "label": "2017",
+                "value": 4.36
+            },
+            {
+                "label": "2018",
+                "value": 3.89
+            },
+            {
+                "label": "2019",
+                "value": 3.68
+            },
+            {
+                "label": "2020",
+                "value": 8.09
+            },
+            {
+                "label": "2021",
+                "value": 5.36
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Wie ist die Altersverteilung in Berlin?",     
+        "unit": "Personen",
+        "source": "StBA",
+        "data": [
+                
+            {
+                "label": "0-19 Jahre",
+                "value": 678200
+            },
+            {
+                "label": "20-39 Jahre",
+                "value": 1100015
+            },
+            {
+                "label": "40-59 Jahre",
+                "value": 976100
+            },
+            {
+                "label": "60-79 Jahre",
+                "value": 690928
+            },
+            {
+                "label": ">80 Jahre",
+                "value": 232229
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "title": "Wie setzt sich der Preis eines 29€ Fairtrade T-Shirts zusammen?",     
+        "unit": "€",
+        "source": "FWF",
+        "data": [
+                
+            {
+                "label": "Lohnkosten (Herstellung)",
+                "value": 0.18
+            },
+            {
+                "label": "Materialkosten",
+                "value": 3.67
+            },
+            {
+                "label": "Fabrik- und Transportkosten",
+                "value": 4.54
+            },
+            {
+                "label": "Kleidungsmarke",
+                "value": 3.61
+            },
+            {
+                "label": "Einzelhandelskosten",
+                "value": 25
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "title": "Wohin sind in Deutschland geborene Menschen ausgewandert?",     
+        "unit": "emigrierte",
+        "source": "OWID",
+        "data": [
+            {
+                "label": "Vereinigtes Königreich",
+                "value": 310043
+            },           
+            {
+                "label": "Türkei",
+                "value": 376288
+            },
+            {
+                "label": "Vereinigte Staaten",
+                "value": 534203
+            },
+            {
+                "label": "Österreich",
+                "value": 232836
+            },
+            {
+                "label": "Schweiz",
+                "value": 357112
+            }          
+        ]
     }
-]
+]       

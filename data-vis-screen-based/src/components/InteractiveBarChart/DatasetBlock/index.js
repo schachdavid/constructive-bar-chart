@@ -5,17 +5,12 @@ import { useDrop } from "react-dnd";
 import { datasetDndType } from "../config";
 import cn from "./index.module.css";
 import { cx } from "../../../utils";
-import { BLOCK_PADDING } from "../../../constants";
+import { BLOCK_PADDING, FONT_ASPECT_RATIO } from "../../../constants";
 
 const getXStretch = (barWidth) => barWidth / 5;
 const getYStretch = (barWidth) => barWidth / 4;
 
-export const DatasetPlaceholder = ({
-  barWidth,
-  className,
-  scaleX,
-  onDrop,
-}) => {
+export const DatasetPlaceholder = ({ barWidth, className, scaleX, onDrop }) => {
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: datasetDndType,
@@ -66,7 +61,9 @@ export const DatasetPlaceholder = ({
 };
 
 const getTitleFontsize = (barWidth, length) => {
-  return (barWidth / length) * 6.2;
+  const lineLength = Math.min(30, length/4)
+  const fontSize = Math.round((barWidth / lineLength) * FONT_ASPECT_RATIO);
+  return Math.min(fontSize, 12);
 };
 
 export const StaticDatasetBlock = React.forwardRef(
@@ -128,12 +125,16 @@ export const StaticDatasetBlock = React.forwardRef(
           >
             {dataset?.title}
           </div>
-        </foreignObject>    
+        </foreignObject>
       </g>
     );
 
     return wrapSvg ? (
-      <svg height={height + yStretch} width={barWidth + xStretch} className={cn.svgWrapper}>
+      <svg
+        height={height + yStretch}
+        width={barWidth + xStretch}
+        className={cn.svgWrapper}
+      >
         {content}
       </svg>
     ) : (

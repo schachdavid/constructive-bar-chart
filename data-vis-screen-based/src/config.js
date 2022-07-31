@@ -8,7 +8,7 @@ const groups = [
   {
     title: "Vermögen",
     icon: <MoneyIcon />,
-    datasets: ["214254223626"],
+    datasets: ["214254223626", "2", "3"],
   },
   {
     title: "COVID-19 Pandemie",
@@ -18,8 +18,9 @@ const groups = [
   {
     title: "Stromerzeugung",
     icon: <EnergyProduceIcon />,
-    datasets: ["12341234", "000000000"],
+    datasets: ["12341234", "000000000", "5"],
   },
+  
 ];
 
 export const datasetGroups = groups.map((group) => ({
