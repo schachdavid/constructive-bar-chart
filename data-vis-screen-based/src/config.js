@@ -8,18 +8,18 @@ const groups = [
   {
     title: "Vermögen",
     icon: <MoneyIcon />,
-    datasets: ["214254223626", "2", "3"],
+    datasets: [ "2", "5"],
   },
-  {
-    title: "COVID-19 Pandemie",
-    icon: <VirusIcon />,
-    datasets: ["2079325172", "147222245792"],
-  },
-  {
-    title: "Stromerzeugung",
-    icon: <EnergyProduceIcon />,
-    datasets: ["12341234", "000000000", "5"],
-  },
+  // {
+  //   title: "COVID-19 Pandemie",
+  //   icon: <VirusIcon />,
+  //   datasets: ["2079325172", "147222245792"],
+  // },
+  // {
+  //   title: "Stromerzeugung",
+  //   icon: <EnergyProduceIcon />,
+  //   datasets: ["12341234", "000000000", "5"],
+  // },
   
 ];
 
