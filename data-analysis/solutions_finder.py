@@ -1,6 +1,7 @@
 from functools import reduce
 from math import floor
 import kmeans1d
+import numpy as np
 
 MAX_NUM_BLOCKS=31
 
@@ -44,9 +45,11 @@ def find_solutions(correct_ratios):
         solutions.append((error[0], error[1], blocks))
     solutions.sort(key=lambda tup: tup[0])
 
-    # cluster solutions in 10 classes
-    clusters, centroids = kmeans1d.cluster([d[0] for d in solutions], 10)
+    # only use solutions where the errors are evenly distributed
+    solutions = list(filter(lambda solution: not has_outliers(solution[1]), solutions))
 
+    # cluster solutions in 10 classes
+    clusters = kmeans1d.cluster([d[0] for d in solutions], 10)[0]
 
     best_solutions = []
 
@@ -56,3 +59,13 @@ def find_solutions(correct_ratios):
             best_solutions.append(solutions[i][2])    
 
     return best_solutions
+
+# find outliers using iqr
+def has_outliers(errors):
+    q3, q1 = np.percentile(errors, [75 ,25])
+    iqr = q3 - q1
+    upper_bound = (q3 + 2.5 * iqr)
+    return any(e > upper_bound for e in errors)
+
+   
+
