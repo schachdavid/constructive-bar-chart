@@ -23,10 +23,10 @@ class GameView:
 
     def get_font_and_wrapped(self):
         # get longest label
-        max_len_total = len(max([field["label"]for field in self.config["fields"]], key=len))
+        max_len_total = len(max([field["label"]for field in self.config["data"]], key=len))
         max_len_row = 0
         wrapped = []
-        for i, field in enumerate(self.config["fields"]):
+        for i, field in enumerate(self.config["data"]):
             rows = textwrap.wrap(field["label"], max_len_total//2.5, break_long_words=False)
             max_len_row = max(max_len_row, len(max(rows, key=len)))
             wrapped.append(rows)

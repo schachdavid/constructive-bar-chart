@@ -27,7 +27,8 @@ def is_tag_available(reader):
     reader.dev_write(0x09, 0x26)
     reader.dev_write(0x01, 0x0C)
     reader.dev_write(0x0D, 0x87)
-    is_available = reader.irq.wait(0.5)
+
+    is_available = reader.irq.wait(0.1)
 
     reader.irq.clear()
     reader.init()
@@ -56,6 +57,6 @@ def thread_function(is_running, reader, on_tag_read, on_tag_remove):
                 on_tag_read(uid)
                 tag_active = True
             reader.stop_crypto()
-        sleep(0.5)
+        sleep(0.1)
 
 

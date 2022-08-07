@@ -44,10 +44,10 @@ class GameFeedbackView:
 
     def get_wrapped(self, break_factor=2.5):
         # get longest label
-        max_len_total = len(max([field["label"]for field in self.config["fields"]], key=len))
+        max_len_total = len(max([field["label"]for field in self.config["data"]], key=len))
         max_len_row = 0
         wrapped = []
-        for i, field in enumerate(self.config["fields"]):
+        for i, field in enumerate(self.config["data"]):
             rows = textwrap.wrap(field["label"], max_len_total//break_factor, break_long_words=False)
             max_len_row = max(max_len_row, len(max(rows, key=len)))
             wrapped.append(rows)
@@ -64,7 +64,7 @@ class GameFeedbackView:
                 y = i * h
                 draw_centered_text(device, draw, font, row, y)
 
-            formatted_number = format_number_with_suffix(self.config["fields"][index]["value"], short=True)
+            formatted_number = format_number_with_suffix(self.config["data"][index]["value"], short=True)
             unit = self.config["unit"]
             text = f"{formatted_number} {unit}"
 

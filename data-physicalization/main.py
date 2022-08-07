@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import datetime
+import json
 
 from lib.router import Router
 from lib.weight_cell import WeightCell
@@ -9,9 +10,9 @@ from screens.game.controller import GameController
 from screens.select_game.controller import SelectGameController
 from screens.game_feedback.controller import GameFeedbackController
 
-from config import config
 from display_manager import dm
 
+config = json.load(open("../data-vis-screen-based/src/data.json"))
 
 def game_feedback_factory(cells):
     def game_feedback_with_cells(*args):

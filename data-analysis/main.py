@@ -1,5 +1,5 @@
 import json
-from solutions_finder import find_solutions, get_error
+from solutions_finder import find_solutions
 from functools import reduce
 
 data = json.load(open('raw-data.json'))
@@ -15,4 +15,10 @@ for config in data:
 f = open("../data-vis-screen-based/src/data.json", "w")
 f.write(json.dumps(data, ensure_ascii=False, indent=2))
 f.close()
+
+f = open("../data-physicalization/data.json", "w")
+f.write(json.dumps(data, ensure_ascii=False, indent=2))
+f.close()
+
+
 
