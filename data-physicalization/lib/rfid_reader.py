@@ -58,5 +58,4 @@ def thread_function(is_running, reader, on_tag_read, on_tag_remove):
                 on_tag_read(uid)
                 tag_active = True
             reader.stop_crypto()
-        print("tag loop finished")
 
