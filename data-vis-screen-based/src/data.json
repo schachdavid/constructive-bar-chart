@@ -1,5 +1,122 @@
 [
   {
+    "id": "16717016115110",
+    "title": "Wie hat sich die Anzahl an Asylanträgen in Deutschland entwickelt?",
+    "flex": true,
+    "unit": "Asylanträge",
+    "source": "BAMF",
+    "data": [
+      {
+        "label": "2011-2012",
+        "value": 130998
+      },
+      {
+        "label": "2013-2014",
+        "value": 329857
+      },
+      {
+        "label": "2015-2016",
+        "value": 1222194
+      },
+      {
+        "label": "2017-2018",
+        "value": 408536
+      },
+      {
+        "label": "2019-2020",
+        "value": 288108
+      }
+    ],
+    "solutions": [
+      [
+        2,
+        4,
+        15,
+        5,
+        3
+      ],
+      [
+        1,
+        3,
+        12,
+        4,
+        3
+      ],
+      [
+        2,
+        4,
+        15,
+        5,
+        4
+      ],
+      [
+        1,
+        2,
+        9,
+        3,
+        2
+      ],
+      [
+        1,
+        3,
+        11,
+        4,
+        3
+      ]
+    ]
+  },
+  {
+    "id": "147222245792",
+    "title": "Wie viele Coronatodesfälle gab es in Deutschland in den Jahreshälften?",
+    "unit": "Todesfälle",
+    "source": "RKI",
+    "data": [
+      {
+        "label": "Sommer 2020",
+        "value": 9362
+      },
+      {
+        "label": "Winter 2020/2021",
+        "value": 65255
+      },
+      {
+        "label": "Sommer 2021",
+        "value": 18574
+      },
+      {
+        "label": "Winter 2021/2022",
+        "value": 33691
+      },
+      {
+        "label": "Sommer 2022",
+        "value": 13170
+      }
+    ],
+    "solutions": [
+      [
+        2,
+        14,
+        4,
+        7,
+        3
+      ],
+      [
+        2,
+        13,
+        4,
+        7,
+        3
+      ],
+      [
+        1,
+        10,
+        3,
+        5,
+        2
+      ]
+    ]
+  },
+  {
     "id": "2079325172",
     "title": "Wie viele Coronainfektionen gab es in Deutschland in den Jahreshälften?",
     "unit": "Infektionen",
@@ -251,7 +368,7 @@
     ]
   },
   {
-    "id": "12341234",
+    "id": "1473021857110",
     "title": "Woraus wurde 2005 in Deutschland der Strom erzeugt?",
     "unit": "kwH",
     "source": "AGEB",
@@ -337,7 +454,7 @@
     ]
   },
   {
-    "id": "000000000",
+    "id": "201814251184",
     "title": "Woraus wurde 2021 in Deutschland der Strom erzeugt?",
     "unit": "kwH",
     "source": "AGEB",
