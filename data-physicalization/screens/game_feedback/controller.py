@@ -3,21 +3,18 @@ import sys
 from threading import Timer
 from functools import reduce
 
-from lib.keyboard import Keyboard
+from lib.util import get_error
 
 from screens.game_feedback.view import GameFeedbackView
 from screens.game_feedback.model import FieldModel
 
-def get_error(a,b):
-    error_list = [abs(item_a-b[i]) for (i, item_a) in enumerate(a)]
-    return (sum(error_list), error_list)
+
 
 class GameFeedbackController:
     def __init__(self, cells, router, config):
         self.view = GameFeedbackView(config)
         self.config = config
         self.router = router
-        self.last_field_ratio = [0,0,0,0,0]
         self.fields = list(
             map(
                 lambda i: FieldModel(
@@ -49,18 +46,20 @@ class GameFeedbackController:
     def get_current_blocks(self):
         return [field.num_blocks for field in self.fields]
 
-    def get_progress(self):       
+    def get_progress(self):
+        # TODO is this the right way to get progress? use same as in data vis     
         error = max(get_error(self.closest_solution, self.get_current_blocks())[0], 0)
 
         return 1 - error/sum(self.closest_solution)
     
     def on_solve(self):
-        for (i, field) in enumerate(self.fields):                    
+        for (i, field) in enumerate(self.fields):
             self.view.draw_solved_field(i)
 
     def on_unsolve(self):
         current_blocks = self.get_current_blocks()
-        for (i, field) in enumerate(self.fields):                    
+        for (i, field) in enumerate(self.fields):
+            print(i)
             self.view.draw_field(
                 i,
                 current_blocks[i],
@@ -68,7 +67,7 @@ class GameFeedbackController:
             )
 
     def get_on_weight_change(self, i):
-        def on_weight_change(field, num_blocks):            
+        def on_weight_change(num_blocks):            
             try:                 
                 progress = self.get_progress()
                 if self.solved and progress > 0.99:

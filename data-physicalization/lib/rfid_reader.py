@@ -40,6 +40,7 @@ def thread_function(is_running, reader, on_tag_read, on_tag_remove):
     last_reading_tag_available = False
 
     while is_running():
+        sleep(0.2)
         if not is_tag_available(reader):         
             if tag_active and not last_reading_tag_available:
                 tag_active = False
@@ -57,6 +58,5 @@ def thread_function(is_running, reader, on_tag_read, on_tag_remove):
                 on_tag_read(uid)
                 tag_active = True
             reader.stop_crypto()
-        sleep(0.1)
-
+        print("tag loop finished")
 

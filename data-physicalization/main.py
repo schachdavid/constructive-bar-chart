@@ -9,14 +9,15 @@ from lib.rfid_reader import RFIDReader
 from screens.game.controller import GameController
 from screens.select_game.controller import SelectGameController
 from screens.game_feedback.controller import GameFeedbackController
+from screens.game_feedback_flex.controller import GameFeedbackFlexController
 
 from display_manager import dm
 
 config = json.load(open("../data-vis-screen-based/src/data.json"))
 
-def game_feedback_factory(cells):
+def game_feedback_factory(cells, controllerConstructor):
     def game_feedback_with_cells(*args):
-        return GameFeedbackController(cells, *args)
+        return controllerConstructor(cells, *args)
     return game_feedback_with_cells
   
     
@@ -49,7 +50,9 @@ try:
     router_config = {
         "SelectGame": SelectGameController,
         "Game": GameController,
-        "GameFeedback": game_feedback_factory(cells),
+        "GameFeedback": game_feedback_factory(cells, GameFeedbackController),
+        "GameFeedbackFlex": game_feedback_factory(cells, GameFeedbackFlexController),
+
     }
     router = Router(router_config)
 

@@ -1,9 +1,10 @@
 from lib.display import Display
 from lib.formatting import format_number_with_suffix
-from lib.draw_utils import get_font_size, draw_block_with_number, draw_centered_text, get_font, get_bold_font, get_max_font, draw_check_mark, draw_chevron, draw_block
+from lib.draw_utils import get_font_size, draw_block_with_number, draw_centered_text, get_font, get_bold_font, get_max_font, draw_check_mark, draw_spike
 import textwrap
 import math
 from display_manager import dm
+
 
 class GameFeedbackView:
     def __init__(self, config):       
@@ -74,7 +75,7 @@ class GameFeedbackView:
 
         dm.displays[index].draw(draw_function)
 
-    def draw_field(self, index, blocks, solution):      
+    def draw_field(self, index, current, solution, is_valid):
         def draw_function(draw, device):
             font = get_max_font(device.width-40, self.max_len)
             label_rows = self.wrapped[index]
@@ -83,41 +84,14 @@ class GameFeedbackView:
             for i, row in enumerate(label_rows):
                 y = device.height / 2  + baseline + i * h      
                 draw.text((40, y), row, fill="white", font=font)
+                draw.text((40, y+20), f"{current} {solution}", fill="white", font=font)
 
-            if blocks == solution:
+            if is_valid:
                 draw_check_mark(draw, 16, device.height//2, 32)
                 return
 
-            diff = solution - blocks
-            distance_between = 15
-            blocks_to_draw = abs(diff)
-            gt_3 = blocks_to_draw > 3
-            if gt_3:
-                blocks_to_draw = 3               
-
-            offset = (device.height - distance_between * (blocks_to_draw - 1))//2-6
-
-            if not gt_3:
-                if blocks_to_draw == 3:
-                    offset += 8 if diff > 0 else -8
-                for i in range(blocks_to_draw):                   
-                    draw_block(draw, 0, offset + i * distance_between, 12)
-            elif diff > 0:
-                offset += 8
-                draw_block_with_number(draw, 0, offset + 2 * distance_between, 12, abs(diff), position="bottom")
-                for i in range(2):                 
-                    draw_block(draw, 0, offset + i * distance_between, 12)
-            else:
-                offset -= 8
-                draw_block_with_number(draw, 0, offset + 0 * distance_between, 12, abs(diff), position="top")
-                for i in range(1,3):                 
-                    draw_block(draw, 0, offset + i * distance_between, 12)
-
-            chevron_y = device.height//2 - math.copysign(blocks_to_draw, diff) * distance_between//2 - math.copysign(8, diff)
-            if blocks_to_draw == 3:
-                chevron_y += 8 if diff > 0 else -8
-
-            draw_chevron(draw, 16, chevron_y, 26, direction=("bottom" if diff < 0 else "top"))
+            spike_height = (solution - current)/10
+            draw_spike(draw, 16, device.height//2 , 26, spike_height)   
 
         dm.displays[index].draw(draw_function)
 

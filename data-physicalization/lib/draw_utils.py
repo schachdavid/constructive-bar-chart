@@ -46,6 +46,13 @@ def draw_chevron(draw, x, y, size, direction="top"):
         draw.line((x+1, y+0.25*size//2+1, x-size//2, y-0.25*size//2), fill="white", width=2)
         draw.line((x, y+0.25*size//2, x+size//2, y-0.25*size//2), fill="white", width=2)
 
+def draw_spike(draw, x, y, width, height):
+    a = (x-width//2, y+height//2)
+    b = (x+width//2, y+height//2)
+    c = (x, y-height//2)
+    draw.line([a,c], fill="white", width=2)
+    draw.line([b,c], fill="white", width=2)   
+
 def draw_block(draw, x, y, size):
     # TODO use ImageDraw.rectangle instead here
     draw.line((x, y, x+size*2.7, y), fill="white", width=1)

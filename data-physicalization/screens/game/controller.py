@@ -16,8 +16,11 @@ class GameController:
             self.view.draw_label(i)
         self.rotaryEncoder = RotaryEncoder(on_click=self.on_click)
 
-    def on_click(self):
-        self.router.push("GameFeedback", self.config)
+    def on_click(self):       
+        if getattr(self.config, "flex", False):
+            self.router.push("GameFeedbackFlex", self.config)
+        else:
+            self.router.push("GameFeedback", self.config)
 
     def cleanup(self):
         self.view.cleanup()

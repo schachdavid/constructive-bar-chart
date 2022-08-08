@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import threading
+from time import sleep
 
 class RotaryEncoder:
     def __init__(self, on_click=lambda x: None, on_left=lambda x: None, on_right=lambda x: None):
@@ -37,4 +38,5 @@ def thread_function(is_running, on_click, on_left, on_right):
             else:
                 on_right() 
         rotary_position = new_rotary_position
+        sleep(0.2)
 
