@@ -1,3 +1,5 @@
+# source: https://github.com/tatobari/hx711py - Apache-2.0 license
+
 import RPi.GPIO as GPIO
 import time
 import threading

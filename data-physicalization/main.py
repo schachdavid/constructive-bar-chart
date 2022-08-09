@@ -6,8 +6,9 @@ from lib.router import Router
 from lib.weight_cell import WeightCell
 from lib.rfid_reader import RFIDReader
 
-from screens.game.controller import GameController
+from screens.display_test.controller import DisplayTestController
 from screens.select_game.controller import SelectGameController
+from screens.game.controller import GameController
 from screens.game_feedback.controller import GameFeedbackController
 from screens.game_feedback_flex.controller import GameFeedbackFlexController
 
@@ -15,10 +16,11 @@ from display_manager import dm
 
 config = json.load(open("../data-vis-screen-based/src/data.json"))
 
-def game_feedback_factory(cells, controllerConstructor):
-    def game_feedback_with_cells(*args):
+
+def controller_cell_factory(cells, controllerConstructor):
+    def controller_with_cells(*args):
         return controllerConstructor(cells, *args)
-    return game_feedback_with_cells
+    return controller_with_cells
   
     
 try:
@@ -31,7 +33,7 @@ try:
     ]
     
     # setup weight cells once at the beginning 
-    weight_calibration = [1181, 1094, 1044, 1173, 1075]
+    weight_calibration = [1186.0370370370374, 1085.4197530864194, 1040.558024691358, 1171.0950617283952, 1141.2950617283946]
     weight_tare = [582234, 649203, -8388608, 178541, 1754914]
 
 
@@ -49,10 +51,10 @@ try:
 
     router_config = {
         "SelectGame": SelectGameController,
-        "Game": GameController,
-        "GameFeedback": game_feedback_factory(cells, GameFeedbackController),
-        "GameFeedbackFlex": game_feedback_factory(cells, GameFeedbackFlexController),
-
+        "Game": controller_cell_factory(cells, GameController),
+        "GameFeedback": GameFeedbackController,
+        "GameFeedbackFlex": controller_cell_factory(cells, GameFeedbackFlexController),
+        "DisplayTest": DisplayTestController,
     }
     router = Router(router_config)
 
@@ -69,9 +71,9 @@ try:
         dm.clean_displays()
 
 
-    rfid_reader = RFIDReader(on_tag_read=on_tag_read, on_tag_remove=on_tag_remove)    
+    rfid_reader = RFIDReader(on_tag_read=on_tag_read, on_tag_remove=on_tag_remove)
 
-    router.push("SelectGame")
+    router.push("DisplayTest")
 
 except (KeyboardInterrupt, SystemExit):
     router.current.cleanup()

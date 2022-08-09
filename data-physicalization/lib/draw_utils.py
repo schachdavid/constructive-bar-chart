@@ -54,7 +54,6 @@ def draw_spike(draw, x, y, width, height):
     draw.line([b,c], fill="white", width=2)   
 
 def draw_block(draw, x, y, size):
-    # TODO use ImageDraw.rectangle instead here
     draw.line((x, y, x+size*2.7, y), fill="white", width=1)
     draw.line((x, y, x, y+size), fill="white", width=1)
     draw.line((x, y+size, x+size*2.7, y+size), fill="white", width=1)

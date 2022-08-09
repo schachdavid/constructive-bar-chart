@@ -6,27 +6,21 @@ from functools import reduce
 from lib.util import get_error
 
 from screens.game_feedback.view import GameFeedbackView
-from screens.game_feedback.model import FieldModel
+from shared_models.field_model import FieldModel
 
 
 
 class GameFeedbackController:
-    def __init__(self, cells, router, config):
+    def __init__(self, router, config, fields):
         self.view = GameFeedbackView(config)
         self.config = config
         self.router = router
-        self.fields = list(
-            map(
-                lambda i: FieldModel(
-                    cells[i],
-                    self.get_on_weight_change(i),
-                ), 
-                range(5)
-            )
-        )
-
+        self.fields = fields       
         self.solved = False        
         self.closest_solution = self.get_closest_solution()
+        print(self.closest_solution)
+        for i, field in enumerate(fields):
+            field.set_on_change(self.get_on_weight_change(i))
 
         progress = self.get_progress()
         if progress > 0.99:
@@ -47,7 +41,8 @@ class GameFeedbackController:
         return [field.num_blocks for field in self.fields]
 
     def get_progress(self):
-        # TODO is this the right way to get progress? use same as in data vis     
+        # TODO is this the right way to get progress? use same as in data vis
+        print( self.get_current_blocks()) 
         error = max(get_error(self.closest_solution, self.get_current_blocks())[0], 0)
 
         return 1 - error/sum(self.closest_solution)
@@ -59,7 +54,6 @@ class GameFeedbackController:
     def on_unsolve(self):
         current_blocks = self.get_current_blocks()
         for (i, field) in enumerate(self.fields):
-            print(i)
             self.view.draw_field(
                 i,
                 current_blocks[i],
