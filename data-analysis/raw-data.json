@@ -285,11 +285,11 @@
     {
         "id": "101997053117",
         "title": "Wohin sind in Deutschland geborene Menschen ausgewandert?",     
-        "unit": "emigrierte",
+        "unit": "Emigrierte",
         "source": "OWID",
         "data": [
             {
-                "label": "Vereinigtes Königreich",
+                "label": "Vereinigtes Königreich (UK)",
                 "value": 310043
             },           
             {
@@ -297,7 +297,7 @@
                 "value": 376288
             },
             {
-                "label": "Vereinigte Staaten",
+                "label": "USA",
                 "value": 534203
             },
             {

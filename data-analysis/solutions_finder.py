@@ -48,6 +48,12 @@ def find_solutions(correct_ratios):
     # only use solutions where the errors are evenly distributed
     solutions = list(filter(lambda solution: not has_outliers(solution[1]), solutions))
 
+    # only use solutions with a maximum of 14 blocks per field
+    solutions = list(filter(lambda solution: not any(f > 14 for f in solution[2]), solutions))
+
+    
+
+
     # cluster solutions in 10 classes
     clusters = kmeans1d.cluster([d[0] for d in solutions], 10)[0]
 
@@ -66,6 +72,7 @@ def has_outliers(errors):
     iqr = q3 - q1
     upper_bound = (q3 + 2.5 * iqr)
     return any(e > upper_bound for e in errors)
+    
 
    
 
