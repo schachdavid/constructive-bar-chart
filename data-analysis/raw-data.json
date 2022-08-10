@@ -64,23 +64,23 @@
         "data": [
             {
                 "label": "Sommer 2020",
-                "value": 251496
+                "value": 253337
             },
             {
                 "label": "Winter 2020/2021",
-                "value": 2371659
+                "value": 2384777
             },
             {
                 "label": "Sommer 2021",
-                "value": 1504119
+                "value": 1514529
             },
             {
                 "label": "Winter 2021/2022",
-                "value": 14697628
+                "value": 14792858
             },
             {
                 "label": "Sommer 2022",
-                "value": 7445760
+                "value": 12409961
             }
         ]
     },
@@ -108,7 +108,35 @@
             },
             {
                 "label": "Sommer 2022",
-                "value": 13170
+                "value": 18312
+            }
+        ]
+    },
+    {
+        "id": "1672511511532",
+        "title": "Wie viele Coronaimpfungen gab es in Deutschland in den Jahreshälften?",
+        "unit": "Impf.",
+        "source": "RKI",
+        "data": [
+            {
+                "label": "Sommer 2020",
+                "value": 0
+            },
+            {
+                "label": "Winter 2020/2021",
+                "value": 10964247
+            },
+            {
+                "label": "Sommer 2021",
+                "value": 97284398
+            },
+            {
+                "label": "Winter 2021/2022",
+                "value": 68428309
+            },
+            {
+                "label": "Sommer 2022",
+                "value": 7458310
             }
         ]
     },

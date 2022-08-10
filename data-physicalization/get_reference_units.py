@@ -37,8 +37,10 @@ for pins in weight_cell_pins:
     hx.tare()
     hx_list.append(hx) 
 
-print("Tare done! You have 5 seconds to add 90 gram blocks on every field.")
-time.sleep(5)
+print("--------------------------------------------------------------------")
+print("Tare done! You have 10 seconds to add 90 gram blocks on every field.")
+time.sleep(10)
+print("--------------------------------------------------------------------")
 print("You should have placed all blocks by now. Starting to get reference units.")
 
 reference_values = []

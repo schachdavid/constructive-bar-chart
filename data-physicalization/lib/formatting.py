@@ -26,6 +26,8 @@ config = [
 ]
 
 def format_number(x):
+    if x > 100:
+        return "{0}".format(int(x)) 
     return "{0}".format(str(round(x, 1) if x % 1 else int(x))) 
 
 

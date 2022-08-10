@@ -56,7 +56,7 @@ class GameFeedbackView:
 
     def draw_solved_field(self, index):
         def draw_function(draw, device):
-            font_size = min([get_font_size(device.width, self.max_len), 15])
+            font_size = min([get_font_size(device.width, self.max_len), 14])
             font = get_font(font_size)            
             label_rows = self.wrapped_solved[index]
             h = draw.textsize("Xg", font=font)[1]
@@ -68,7 +68,7 @@ class GameFeedbackView:
             unit = self.config["unit"]
             text = f"{formatted_number} {unit}"
 
-            font_size = min([get_font_size(device.width, len(text)), 15])            
+            font_size = min([get_font_size(device.width, len(text)), 14])            
             font = get_font(font_size)
             draw_centered_text(device, draw, font, text, device.height - 20)
 
