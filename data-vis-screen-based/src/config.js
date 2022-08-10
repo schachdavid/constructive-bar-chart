@@ -1,27 +1,42 @@
-import { ReactComponent as MoneyIcon } from "./static-assets/icons/money.svg";
+import { ReactComponent as MigrationIcon } from "./static-assets/icons/migration.svg";
 import { ReactComponent as VirusIcon } from "./static-assets/icons/virus.svg";
 import { ReactComponent as EnergyProduceIcon } from "./static-assets/icons/energy-produce.svg";
+import { ReactComponent as AgeGroupsIcon } from "./static-assets/icons/age-groups.svg";
 
 import data from "./data.json";
 
-const groups = [
+const normalGroups = [
   {
-    title: "Vermögen",
-    icon: <MoneyIcon />,
-    datasets: [ "2", "5"],
+    title: "COVID-19 Pandemie",
+    icon: <VirusIcon />,
+    datasets: ["2079325172", "147222245792"],
   },
-  // {
-  //   title: "COVID-19 Pandemie",
-  //   icon: <VirusIcon />,
-  //   datasets: ["2079325172", "147222245792"],
-  // },
-  // {
-  //   title: "Stromerzeugung",
-  //   icon: <EnergyProduceIcon />,
-  //   datasets: ["12341234", "000000000", "5"],
-  // },
-  
+  {
+    title: "Stromerzeugung",
+    icon: <EnergyProduceIcon />,
+    datasets: ["1473021857110", "201814251184"],
+  },
 ];
+
+const memoryGroups = [
+  {
+    title: "Altergruppen",
+    icon: <AgeGroupsIcon />,
+    datasets: ["2442339250115"],
+  },
+  {
+    title: "Migration",
+    icon: <MigrationIcon />,
+    datasets: ["101997053117"],
+  },
+];
+
+let groups;
+if (window.location.href.includes("?")) {
+  groups = memoryGroups;
+} else {
+  groups = normalGroups;
+}
 
 export const datasetGroups = groups.map((group) => ({
   ...group,

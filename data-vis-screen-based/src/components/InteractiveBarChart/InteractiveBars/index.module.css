@@ -2,7 +2,7 @@
   position: relative;
   text-align: center;
   box-sizing: border-box;
-  padding: 0 1rem;
+  padding: 0 0rem;
   width: 100%;
   word-break: normal;
   user-select: none;
@@ -78,5 +78,8 @@
 
 .labelValue {
   position: absolute;
-  top: 35px;
+  top: 32px;
+  
+  text-align: center;
+  width: 100%;
 }

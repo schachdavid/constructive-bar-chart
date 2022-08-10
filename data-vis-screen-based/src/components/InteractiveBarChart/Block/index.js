@@ -1,9 +1,8 @@
-import { useDrag, useDragDropManager } from "react-dnd";
+import { useDrag } from "react-dnd";
 import React from "react";
 
 import { blocksDndType } from "../config";
 import cn from "./index.module.css";
-import { cx } from "../../../utils";
 import { BLOCK_PADDING } from "../../../constants";
 
 const getXStretch = (barWidth) => barWidth / 5;

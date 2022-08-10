@@ -12,3 +12,8 @@ body {
 svg {
   display: block
 }
+
+.grabbing {
+  cursor: grabbing !important;
+  user-select: none;
+}

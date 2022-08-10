@@ -1,6 +1,5 @@
 import { useDragLayer } from "react-dnd";
 import { blocksDndType, datasetDndType } from "../config";
-import { StaticBlock } from "../Block";
 import cn from "./index.module.css";
 import { StaticDatasetBlock } from "../DatasetBlock";
 import { Bar } from "../Bar";
@@ -75,11 +74,11 @@ export const CustomDragLayer = (props) => {
     }
   }
   if (!isDragging) {
-    document.body.style.cursor = "auto";
+    document.body.classList.remove("grabbing");
     return null;
   }
 
-  document.body.style.cursor = "grabbing";
+  document.body.classList.add("grabbing");
 
   return (
     <div style={layerStyles}>

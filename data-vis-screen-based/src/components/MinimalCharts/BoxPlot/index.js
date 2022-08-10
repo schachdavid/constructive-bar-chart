@@ -33,6 +33,7 @@ export const BoxPlot = ({
         .domain(data.map(getX))
         .range([0, width])
         .paddingInner(0.2),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [scaleY, width]
   );
 

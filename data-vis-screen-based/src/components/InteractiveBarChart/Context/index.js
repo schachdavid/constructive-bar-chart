@@ -15,7 +15,7 @@ export const Context = React.createContext({
 });
 
 export const ContextProvider = ({ children }) => {
-  const [availableBlocks, setAvailableBlocks] = useState([8, 6, 4]);
+  const [availableBlocks, setAvailableBlocks] = useState([6, 8, 8]);
   const [fields, setFields] = useState([[], [], [], [], []]);
   const [availableDatasets, setAvailableDatasets] = useState(datasetGroups);
 

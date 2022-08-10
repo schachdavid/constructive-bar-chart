@@ -116,7 +116,7 @@ export const StaticDatasetBlock = React.forwardRef(
             shapeRendering="crispEdges"
           />
         )}
-        <foreignObject x="0" y="0" width={width} height={height}>
+        <foreignObject x="0" y="0" width={width} height={height} style={{overflow: 'visible'}}>
           <div
             className={cn.title}
             style={{

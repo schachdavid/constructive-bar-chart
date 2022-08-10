@@ -11,11 +11,13 @@
     "d3-shape": "^3.0.1",
     "d3-time": "^3.0.0",
     "d3-time-format": "^4.0.0",
+    "debounce": "^1.2.1",
     "gh-pages": "^4.0.0",
     "react": "^17.0.2",
     "react-dnd": "^14.0.4",
     "react-dnd-html5-backend": "^14.0.2",
     "react-dnd-mouse-backend": "^1.0.0-rc.2",
+    "react-dnd-touch-backend": "^16.0.1",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "web-vitals": "^1.1.2"

@@ -4,7 +4,6 @@ import { DndProvider } from "react-dnd";
 import MouseBackEnd from "react-dnd-mouse-backend";
 
 import { Chart } from "../MinimalCharts";
-import { useRef } from "react";
 import { Block, Placeholder } from "./Block";
 import { CustomDragLayer } from "./CustomDragLayer";
 import { InteractiveBars } from "./InteractiveBars";
@@ -48,8 +47,7 @@ function findClosestSolution(solutions, fields) {
 }
 
 const Content = () => {
-  const ref = useRef(null);
-  const dimensions = useDimensions(ref);
+  const [ref, dimensions] = useDimensions();
   const {
     availableBlocks,
     setAvailableBlocks,
@@ -180,12 +178,17 @@ const Content = () => {
                 ) : (
                   <Placeholder barWidth={scaledBlockSize} wrapSvg={true} />
                 )}
-                <div
-                  className={cn.blocksLeftLabel}
-                  style={{ paddingRight: scaledBlockSize / 5 }}
-                >
-                  {d} übrig
-                </div>
+                {
+                  <div
+                    className={cn.blocksLeftLabel}
+                    style={{
+                      paddingRight: scaledBlockSize / 5,
+                      visibility: d < 4 ? "visible" : "hidden",
+                    }}
+                  >
+                    {d} übrig
+                  </div>
+                }
               </div>
             );
           })}
@@ -202,9 +205,15 @@ const Content = () => {
               className={cn.datasets}
               style={{ minHeight: scaledBlockSize * 2 }}
             >
-              {group.datasets
-                .filter((d) => !d.hidden)
-                .map((d) => (
+              {group.datasets.map((d) =>
+                d.hidden ? (
+                  <div
+                    className={cn.datasetWithLabel}
+                    style={{ position: "relative", top: scaledBlockSize * 1.23 }}
+                  >
+                    <Placeholder barWidth={scaledBlockSize} wrapSvg={true} />
+                  </div>
+                ) : (
                   <div className={cn.datasetWithLabel}>
                     <DatasetBlock
                       key={d.id}
@@ -226,7 +235,8 @@ const Content = () => {
                       Quelle: {d.source}
                     </div>
                   </div>
-                ))}
+                )
+              )}
             </div>
           </div>
         ))}
