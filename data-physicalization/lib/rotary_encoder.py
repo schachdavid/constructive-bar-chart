@@ -38,5 +38,5 @@ def thread_function(is_running, on_click, on_left, on_right):
             else:
                 on_right() 
         rotary_position = new_rotary_position
-        sleep(0.2)
+        sleep(0.05)
 

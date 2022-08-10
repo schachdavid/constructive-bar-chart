@@ -4,7 +4,7 @@ from PIL import ImageFont, Image
 FONT_ASPECT_RATIO = 85/50
 
 def get_max_font(width, text_length):
-    return get_font(get_font_size(width, text_length))
+    return get_font(min(get_font_size(width, text_length),30))
 
 def get_font_size(width, text_length):
     return int(width/text_length * FONT_ASPECT_RATIO)

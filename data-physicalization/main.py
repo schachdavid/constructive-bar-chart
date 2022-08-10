@@ -73,7 +73,7 @@ try:
 
     rfid_reader = RFIDReader(on_tag_read=on_tag_read, on_tag_remove=on_tag_remove)
 
-    router.push("DisplayTest")
+    router.push("SelectGame")
 
 except (KeyboardInterrupt, SystemExit):
     router.current.cleanup()

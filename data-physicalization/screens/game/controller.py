@@ -33,6 +33,9 @@ class GameController:
         else:
             self.router.push("GameFeedback", self.config, self.fields)
 
-    def cleanup(self):
+    def cleanup(self, next_screen):
+        if next_screen != 'GameFeedback':
+            for field in self.fields:
+                field.cleanup()
         self.view.cleanup()
         self.rotaryEncoder.cleanup()

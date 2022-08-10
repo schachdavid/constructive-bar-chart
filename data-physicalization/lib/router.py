@@ -5,5 +5,5 @@ class Router:
 
     def push(self, key, *args):
         if self.current != None:
-            self.current.cleanup()   
+            self.current.cleanup(key)   
         self.current = self.config[key](self, *args)

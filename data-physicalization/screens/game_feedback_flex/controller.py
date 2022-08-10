@@ -109,7 +109,7 @@ class GameFeedbackFlexController:
                return
         return on_weight_change
 
-    def cleanup(self):
+    def cleanup(self, next_screen):        
         for field in self.fields:
             field.cleanup()
         self.view.cleanup()

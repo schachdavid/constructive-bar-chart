@@ -5,5 +5,5 @@ class SelectGameController:
         self.view = View()
         self.view.draw()
 
-    def cleanup(self):
+    def cleanup(self, next_screen):        
         self.view.cleanup()

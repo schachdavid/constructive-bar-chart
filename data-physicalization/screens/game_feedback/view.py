@@ -17,7 +17,7 @@ class GameFeedbackView:
             draw.rectangle([0, 0, device.width-1, bar_height], outline="white")
             draw.rectangle([0, 0, device.width * progress, bar_height], fill="white")
            
-            text = str(int(progress*100)) + "%"
+            text = str(round(progress*100)) + "%"
             font = get_font(14)
             w = draw.textsize(text, font=font)[0]
             available_space = device.width - device.width * progress

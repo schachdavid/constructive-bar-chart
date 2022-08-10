@@ -13,6 +13,7 @@ from shared_models.field_model import FieldModel
 class GameFeedbackController:
     def __init__(self, router, config, fields):
         self.view = GameFeedbackView(config)
+
         self.config = config
         self.router = router
         self.fields = fields       
@@ -21,6 +22,7 @@ class GameFeedbackController:
         print(self.closest_solution)
         for i, field in enumerate(fields):
             field.set_on_change(self.get_on_weight_change(i))
+            field.set_sleep_time(0.08) # poll more frequently here
 
         progress = self.get_progress()
         if progress > 0.99:
@@ -40,11 +42,8 @@ class GameFeedbackController:
     def get_current_blocks(self):
         return [field.num_blocks for field in self.fields]
 
-    def get_progress(self):
-        # TODO is this the right way to get progress? use same as in data vis
-        print( self.get_current_blocks()) 
-        error = max(get_error(self.closest_solution, self.get_current_blocks())[0], 0)
-
+    def get_progress(self):        
+        error = get_error(self.closest_solution, self.get_current_blocks())[0]
         return 1 - error/sum(self.closest_solution)
     
     def on_solve(self):
@@ -86,7 +85,7 @@ class GameFeedbackController:
                return
         return on_weight_change
 
-    def cleanup(self):
+    def cleanup(self, next_screen):        
         for field in self.fields:
             field.cleanup()
         self.view.cleanup()

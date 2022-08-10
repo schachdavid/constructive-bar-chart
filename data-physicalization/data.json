@@ -643,7 +643,7 @@
     "source": "OWID",
     "data": [
       {
-        "label": "Vereinigtes Königreich",
+        "label": "Vereinigtes Königreich (UK)",
         "value": 310043
       },
       {
@@ -651,7 +651,7 @@
         "value": 376288
       },
       {
-        "label": "Vereinigte Staaten",
+        "label": "USA",
         "value": 534203
       },
       {
