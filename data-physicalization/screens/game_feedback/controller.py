@@ -44,7 +44,8 @@ class GameFeedbackController:
 
     def get_progress(self):        
         error = get_error(self.closest_solution, self.get_current_blocks())[0]
-        return 1 - error/sum(self.closest_solution)
+        print('error', error, self.closest_solution, self.get_current_blocks())
+        return max(1 - error/sum(self.closest_solution), 0)
     
     def on_solve(self):
         for (i, field) in enumerate(self.fields):
