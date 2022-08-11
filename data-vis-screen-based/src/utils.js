@@ -44,11 +44,11 @@ const formattingConfig = [
 ];
 
 export function formatNumberWithSuffix(x, short) {
-  console.log(x, short);
   const levelConfig = formattingConfig.find((d) => d.factor <= x);
   if (!levelConfig) return `${x}`;
   let num = x / levelConfig.factor;
   num = Math.round(num * 10) / 10;
+  if (num > 100) num = Math.round(num);
   const suffix = short
     ? levelConfig.short
     : num === 1

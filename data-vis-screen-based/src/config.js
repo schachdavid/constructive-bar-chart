@@ -9,7 +9,7 @@ const normalGroups = [
   {
     title: "COVID-19 Pandemie",
     icon: <VirusIcon />,
-    datasets: ["2079325172", "147222245792"],
+    datasets: ["2079325172", "147222245792", "1672511511532"],
   },
   {
     title: "Stromerzeugung",
