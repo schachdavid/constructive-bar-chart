@@ -1,9 +1,8 @@
 
 
 from lib.display import Display
-from lib.formatting import get_suffix_and_number, format_number_with_suffix
 from lib.multiplexer import Multiplexer
-from lib.draw_utils import draw_block_with_number, draw_centered_text, get_font, get_max_font, draw_check_mark, draw_chevron, draw_block
+from lib.draw_utils import draw_centered_text, get_font, get_max_font, draw_check_mark, draw_chevron, draw_block
 import textwrap
 import math
 from display_manager import dm

@@ -3,7 +3,7 @@ import sys
 from threading import Timer
 from functools import reduce
 
-from lib.rotary_encoder import RotaryEncoder
+from lib.button import Button
 from screens.game.view import GameView
 from shared_models.field_model import FieldModel
 
@@ -25,7 +25,7 @@ class GameController:
             )
         )
 
-        self.rotaryEncoder = RotaryEncoder(on_click=self.on_click)
+        self.button = Button(on_click=self.on_click)
 
     def on_click(self):       
         if getattr(self.config, "flex", False):
@@ -38,4 +38,4 @@ class GameController:
             for field in self.fields:
                 field.cleanup()
         self.view.cleanup()
-        self.rotaryEncoder.cleanup()
+        self.button.cleanup()

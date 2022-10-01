@@ -4,8 +4,6 @@ from functools import reduce
 
 data = json.load(open('raw-data.json'))
 
-# TODO find solutions
-
 for config in data:
     total = reduce(lambda a, b: a+b["value"], config["data"], 0)
     ratios = list(map(lambda d: d["value"]/total, config["data"]))

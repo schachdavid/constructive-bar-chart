@@ -51,9 +51,6 @@ def find_solutions(correct_ratios):
     # only use solutions with a maximum of 14 blocks per field
     solutions = list(filter(lambda solution: not any(f > 14 for f in solution[2]), solutions))
 
-    
-
-
     # cluster solutions in 10 classes
     clusters = kmeans1d.cluster([d[0] for d in solutions], 10)[0]
 
