@@ -35,7 +35,8 @@ class GameFeedbackController:
     
     def get_closest_solution(self):
         current_blocks = self.get_current_blocks()
-        errors = [get_error(solution, current_blocks)[1] for solution in self.config["solutions"]]
+        errors = [get_error(solution, current_blocks)[0] for solution in self.config["solutions"]]
+        print(errors)
         closest_solution = self.config["solutions"][min(range(len(errors)), key=errors.__getitem__)]
         return closest_solution
 
