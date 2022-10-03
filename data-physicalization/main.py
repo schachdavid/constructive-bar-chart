@@ -1,16 +1,16 @@
 import RPi.GPIO as GPIO
-import datetime
 import json
 
 from lib.router import Router
 from lib.weight_cell import WeightCell
 from lib.rfid_reader import RFIDReader
 
-from screens.display_test.controller import DisplayTestController
-from screens.select_game.controller import SelectGameController
 from screens.game.controller import GameController
 from screens.game_feedback.controller import GameFeedbackController
 from screens.game_feedback_flex.controller import GameFeedbackFlexController
+from screens.display_test.controller import DisplayTestController
+from screens.calibration.controller import CalibrationController
+from screens.select_game.controller import SelectGameController
 
 from display_manager import dm
 
@@ -33,8 +33,7 @@ try:
     ]
     
     # setup weight cells once at the beginning 
-    weight_calibration = [1147.8530864197528, 1078.2098765432097, 1029.2814814814815, 1147.2185185185185, 1025.5049382716056]
-    weight_tare = [582234, 649203, -8388608, 178541, 1754914]
+    weight_calibration = json.load(open("./weight_calibration.json"))
 
 
     cells = list(
@@ -42,8 +41,8 @@ try:
             lambda i: WeightCell(
                 weight_cell_pins[i][0],
                 weight_cell_pins[i][1],
-                weight_calibration[i],
-                weight_tare[i]
+                weight_calibration[i]["reference"],
+                weight_calibration[i]["tare_offset"],
             ), 
             range(5)
         )
@@ -55,12 +54,24 @@ try:
         "GameFeedback": GameFeedbackController,
         "GameFeedbackFlex": controller_cell_factory(cells, GameFeedbackFlexController),
         "DisplayTest": DisplayTestController,
+        "Calibration": controller_cell_factory(cells, CalibrationController),
     }
     router = Router(router_config)
+
+    CALIBRATION_TAG_UID = "1352131711548"
+    DISPLAY_TEST_TAG_UID = "103902611584"
 
     def on_tag_read(uid):
         id = ''.join(str(v) for v in uid)
         print("read", id)
+
+        if id == DISPLAY_TEST_TAG_UID:
+            router.push("DisplayTest")
+            return
+        if id == CALIBRATION_TAG_UID:
+            router.push("Calibration")
+            return  
+
         current = next(filter(lambda x: x["id"] == id, config), None)
         if current != None:
             router.push("Game", current)

@@ -1,5 +1,4 @@
 from lib.hx711 import HX711
-from statistics import mean
 
 def get_median(items):
     sorted_list = items.copy()
@@ -14,11 +13,14 @@ class WeightCell:
         self.hx.set_reading_format("MSB", "MSB")
         self.hx.set_reference_unit(weight_calibration)
         self.hx.reset()
-        self.hx.tare() # set a fixed offset or tare every time
-        # self.hx.set_offset_A(weight_tare)
+        # set a fixed offset or tare every time
+        # self.hx.tare() 
+        self.hx.set_offset_A(weight_tare)
         self.weight_hist = [1, 1, 1]
         self.last_weight = 1
         self.changed = False
+
+    
 
     def get_weight(self):
         weight = int(self.hx.get_weight(1))

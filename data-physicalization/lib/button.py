@@ -5,7 +5,7 @@ from time import sleep
 class Button:
     def __init__(self, on_click=lambda x: None):
         self.is_running = True
-        self.thread = threading.Thread(target=thread_function, args=(lambda : self.is_running, on_click, on_left, on_right))
+        self.thread = threading.Thread(target=thread_function, args=(lambda : self.is_running, on_click))
         self.thread.start()
 
     def cleanup(self):
