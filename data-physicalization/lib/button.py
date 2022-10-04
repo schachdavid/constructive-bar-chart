@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import threading
+
 from time import sleep
 
 class Button:
@@ -26,4 +27,3 @@ def thread_function(is_running, on_click):
             on_click() 
         button_position = new_button_position       
         sleep(0.05)
-

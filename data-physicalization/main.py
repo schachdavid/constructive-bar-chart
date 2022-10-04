@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 import json
+import time
 
 from lib.router import Router
 from lib.weight_cell import WeightCell
@@ -63,7 +64,7 @@ try:
 
     def on_tag_read(uid):
         id = ''.join(str(v) for v in uid)
-        print("read", id)
+        print("read", id, "at", time.time())
 
         if id == DISPLAY_TEST_TAG_UID:
             router.push("DisplayTest")

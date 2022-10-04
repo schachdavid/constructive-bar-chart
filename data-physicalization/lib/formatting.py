@@ -48,10 +48,3 @@ def get_suffix_and_number(x, short=False):
 def format_number_with_suffix(x, short=False):
     suffix, num = get_suffix_and_number(x, short)
     return f"{num}\u2009{suffix}"
-
-
-
-
-
-
-    

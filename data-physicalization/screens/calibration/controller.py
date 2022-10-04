@@ -46,11 +46,11 @@ class CalibrationController:
             hx.tare(15)
             self.tare_offsets.append(hx.get_offset_A())
 
-    """
-    Updates the reference units.
-    Uses the known weight of 90 gram and the rule of thirds.
-    """
-    def update_reference_units(self):        
+
+    def update_reference_units(self):
+        '''
+         Updates the reference units by using the known weight.
+        '''  
         self.reference_values = []
         for cell in self.cells:
             hx = cell.hx

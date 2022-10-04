@@ -76,9 +76,3 @@ def draw_block_with_number(draw, x, y, size, number, position="top"):
         draw.line((x, y, x+w, y), fill="white", width=1)
         draw.line((x+w, y, x+w, y + size * 0.6), fill="white", width=1)
         draw.text((x_text, y + size - 11), text, fill="white", font=font)
-
-
-
-
-    
-

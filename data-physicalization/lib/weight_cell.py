@@ -35,7 +35,3 @@ class WeightCell:
         self.last_weight = weight 
 
         return weight    
-
-
-
-
