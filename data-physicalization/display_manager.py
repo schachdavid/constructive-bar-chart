@@ -10,10 +10,7 @@ class DisplayManager:
         self.displays = list(
             map(lambda i: Display(i+1, multiplexer), range(5))
         )
-
     
     def clean_displays(self):
         for display in self.displays:
             display.cleanup()
-
-dm = DisplayManager.instance().
