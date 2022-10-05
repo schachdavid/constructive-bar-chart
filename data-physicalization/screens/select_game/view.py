@@ -1,7 +1,7 @@
 from PIL import ImageFont
 from lib.draw_utils import draw_centered_text, get_font
 
-from display_manager import dm
+from display_manager import DisplayManager
 
 class View:
     def draw(self):
@@ -10,7 +10,7 @@ class View:
             draw_centered_text(device, draw, font, "Wähle einen", 2)
             draw_centered_text(device, draw, font, "Datensatz", 30)
      
-        dm.main_display.draw(draw_function)
+        DisplayManager.instance().main_display.draw(draw_function)
 
     def cleanup(self): 
-        dm.main_display.cleanup()      
+        DisplayManager.instance().main_display.cleanup()      

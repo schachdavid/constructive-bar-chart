@@ -5,7 +5,7 @@ from lib.multiplexer import Multiplexer
 from lib.draw_utils import draw_centered_text, get_font, get_max_font, draw_check_mark, draw_chevron, draw_block
 import textwrap
 import math
-from display_manager import dm
+from display_manager import DisplayManager
 
 class GameView:
     def __init__(self, config):      
@@ -18,7 +18,7 @@ class GameView:
             draw_centered_text(device, draw, font, "Schätze", 2)
             draw_centered_text(device, draw, font, "die Daten", 30)
 
-        dm.main_display.draw(draw_function)
+        DisplayManager.instance().main_display.draw(draw_function)
 
     def get_font_and_wrapped(self):
         # get longest label
@@ -30,7 +30,7 @@ class GameView:
             max_len_row = max(max_len_row, len(max(rows, key=len)))
             wrapped.append(rows)
 
-        return get_max_font(dm.main_display.device.width, max_len_row), wrapped, max_len_row
+        return get_max_font(DisplayManager.instance().main_display.device.width, max_len_row), wrapped, max_len_row
 
     def draw_label(self, index):
         def draw_function(draw, device):
@@ -40,7 +40,7 @@ class GameView:
             for i, row in enumerate(label_rows):
                 y = device.height / 2  + baseline + i * h      
                 draw_centered_text(device, draw, self.font, row, y)
-        dm.displays[index].draw(draw_function)
+        DisplayManager.instance().displays[index].draw(draw_function)
     
     def cleanup(self): 
         pass    

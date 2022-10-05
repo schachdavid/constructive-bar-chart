@@ -16,4 +16,4 @@ class DisplayManager:
         for display in self.displays:
             display.cleanup()
 
-dm = DisplayManager.instance()
+dm = DisplayManager.instance().

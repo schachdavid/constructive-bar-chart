@@ -3,7 +3,7 @@ from lib.formatting import format_number_with_suffix
 from lib.draw_utils import get_font_size, draw_block_with_number, draw_centered_text, get_font, get_bold_font, get_max_font, draw_check_mark, draw_spike
 import textwrap
 import math
-from display_manager import dm
+from display_manager import DisplayManager
 
 
 class GameFeedbackView:
@@ -41,7 +41,7 @@ class GameFeedbackView:
                 draw_centered_text(device, draw, font, "Korrigiere deine", bar_height + 5)
                 draw_centered_text(device, draw, font, "Schätzung", bar_height + 21 )
 
-        dm.main_display.draw(draw_function)
+        DisplayManager.instance().main_display.draw(draw_function)
 
     def get_wrapped(self, break_factor=2.5):
         # get longest label
@@ -73,7 +73,7 @@ class GameFeedbackView:
             font = get_font(font_size)
             draw_centered_text(device, draw, font, text, device.height - 20)
 
-        dm.displays[index].draw(draw_function)
+        DisplayManager.instance().displays[index].draw(draw_function)
 
     def draw_field(self, index, current, solution, is_valid):
         def draw_function(draw, device):
@@ -93,7 +93,7 @@ class GameFeedbackView:
             spike_height = (solution - current)/10
             draw_spike(draw, 16, device.height//2 , 26, spike_height)   
 
-        dm.displays[index].draw(draw_function)
+        DisplayManager.instance().displays[index].draw(draw_function)
 
     
     def cleanup(self):

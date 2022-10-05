@@ -13,7 +13,7 @@ from screens.display_test.controller import DisplayTestController
 from screens.calibration.controller import CalibrationController
 from screens.select_game.controller import SelectGameController
 
-from display_manager import dm
+from display_manager import DisplayManager
 
 config = json.load(open("../data-vis-screen-based/src/data.json"))
 
@@ -80,7 +80,7 @@ try:
     def on_tag_remove():
         print("removed tag")
         router.push("SelectGame")
-        dm.clean_displays()
+        DisplayManager.instance().clean_displays()
 
 
     rfid_reader = RFIDReader(on_tag_read=on_tag_read, on_tag_remove=on_tag_remove)
