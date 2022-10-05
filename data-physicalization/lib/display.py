@@ -13,6 +13,8 @@ class Display:
         self.device.clear()
 
     def draw(self, draw_function):
+        while not hasattr(self, 'device'):
+            pass
         self.multiplexer.put(
             2 if self.port == 7 else 1, 
             self.port, 
@@ -20,6 +22,7 @@ class Display:
         )
 
     def draw_using_mux(self, draw_function):
+   
         with canvas(self.device) as draw:
             draw_function(draw, self.device)
 

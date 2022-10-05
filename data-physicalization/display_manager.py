@@ -1,8 +1,10 @@
 from lib.multiplexer import Multiplexer
 from lib.display import Display
+from lib.singleton import Singleton
 
+@Singleton
 class DisplayManager:
-    def __init__(self, ):
+    def __init__(self):
         multiplexer = Multiplexer()
         self.main_display = Display(7, multiplexer)
         self.displays = list(
@@ -14,4 +16,4 @@ class DisplayManager:
         for display in self.displays:
             display.cleanup()
 
-dm = DisplayManager()
+dm = DisplayManager.instance()
