@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 import json
 import time
+import sys
 
 from lib.router import Router
 from lib.weight_cell import WeightCell
@@ -90,5 +91,5 @@ try:
 except (KeyboardInterrupt, SystemExit):
     router.current.cleanup()
     rfid_reader.cleanup()
-    sys.exit(0)
     GPIO.cleanup()
+    sys.exit(0)
