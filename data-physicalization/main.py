@@ -9,7 +9,7 @@ from lib.rfid_reader import RFIDReader
 
 from screens.game.controller import GameController
 from screens.game_feedback.controller import GameFeedbackController
-from screens.game_feedback_flex.controller import GameFeedbackFlexController
+from screens.scale.controller import ScaleController
 from screens.display_test.controller import DisplayTestController
 from screens.calibration.controller import CalibrationController
 from screens.select_game.controller import SelectGameController
@@ -54,9 +54,9 @@ try:
         "SelectGame": SelectGameController,
         "Game": controller_cell_factory(cells, GameController),
         "GameFeedback": GameFeedbackController,
-        "GameFeedbackFlex": controller_cell_factory(cells, GameFeedbackFlexController),
         "DisplayTest": DisplayTestController,
         "Calibration": controller_cell_factory(cells, CalibrationController),
+        "Scale": controller_cell_factory(cells, ScaleController),
     }
     router = Router(router_config)
 

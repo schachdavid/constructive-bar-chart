@@ -1,11 +1,9 @@
 import threading
-
-from lib.unique_priority_queue import UniquePriorityQueue
 import smbus2
-from queue import PriorityQueue
-
 from functools import total_ordering
 from time import time
+
+from lib.unique_priority_queue import UniquePriorityQueue
 
 class Multiplexer:
     def __init__(self):
@@ -39,9 +37,13 @@ class Multiplexer:
         while is_running():
             item = self.queue.get()[1]
             if self.current_port != item.port:
-                print("switching to port", item.port)
                 self.switch_port(item.port)
-            item.action()
+
+            # cancel action if there is a new item for the same port in the queue
+            def should_cancel():
+                return any(d[1].port == item.port for d in self.queue.queue)                
+            
+            item.action(should_cancel)
 
 
 @total_ordering

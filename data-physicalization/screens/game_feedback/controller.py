@@ -22,7 +22,7 @@ class GameFeedbackController:
         print(self.closest_solution)
         for i, field in enumerate(fields):
             field.set_on_change(self.get_on_weight_change(i))
-            field.set_sleep_time(0.08) # poll more frequently here
+            field.set_sleep_time(0.1) # poll more frequently here
 
         progress = self.get_progress()
         if progress > 0.99:

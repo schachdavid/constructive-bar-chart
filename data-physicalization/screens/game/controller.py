@@ -1,8 +1,3 @@
-import time
-import sys
-from threading import Timer
-from functools import reduce
-
 from lib.button import Button
 from screens.game.view import GameView
 from shared_models.field_model import FieldModel
@@ -28,10 +23,7 @@ class GameController:
         self.button = Button(on_click=self.on_click)
 
     def on_click(self):       
-        if getattr(self.config, "flex", False):
-            self.router.push("GameFeedbackFlex", self.config)
-        else:
-            self.router.push("GameFeedback", self.config, self.fields)
+        self.router.push("GameFeedback", self.config, self.fields)
 
     def cleanup(self, next_screen):
         if next_screen != 'GameFeedback':

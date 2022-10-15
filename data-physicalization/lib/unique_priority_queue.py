@@ -22,9 +22,11 @@ class UniquePriorityQueue(Queue):
 
     def _put(self, item):
         for (i, current_item) in enumerate(self.queue):
+            # TODO use comparator here
             if item[1].port == current_item[1].port:
                 self.queue.pop(i)
         heappush(self.queue, item)
 
     def _get(self):
         return heappop(self.queue)
+        
