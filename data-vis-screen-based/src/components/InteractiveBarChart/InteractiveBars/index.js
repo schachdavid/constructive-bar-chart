@@ -16,10 +16,9 @@ import { ReactComponent as CheckMarkIcon } from "../../../static-assets/icons/ci
 import { ReactComponent as ChevronUp } from "../../../static-assets/icons/chevron-up.svg";
 import { ReactComponent as ChevronDown } from "../../../static-assets/icons/chevron-down.svg";
 
-
 function getMaxFontSizeForWidth(bandwidth, length) {
-  const fontSize = Math.round((bandwidth / length) * FONT_ASPECT_RATIO)
-  return  Math.min(fontSize, 15);
+  const fontSize = Math.round((bandwidth / length) * FONT_ASPECT_RATIO);
+  return Math.min(fontSize, 15);
 }
 
 const Label = ({
@@ -119,19 +118,19 @@ const Label = ({
   );
 };
 
-export const InteractiveBars = ({ barWidth, ...props }) => {
+export const InteractiveBars = ({
+  barWidth,
+  width,
+  getX,
+  scaleY,
+}) => {
   const {
     fields,
     setFields,
     solution,
     dataset: rawDataset,
   } = useContext(Context);
-  const { className, data, width, getX, getY, scaleY, setYExtent } = props;
   const dataset = rawDataset || EMPTY_DATASET;
-
-  useEffect(() => {
-    if (data) setYExtent((yExtent) => updateExtent(yExtent, getY, data));
-  }, [data, getY, setYExtent]);
 
   const scaleX = useMemo(() => {
     return scaleBand()
@@ -179,6 +178,8 @@ export const InteractiveBars = ({ barWidth, ...props }) => {
     return getMaxFontSizeForWidth(scaleX.bandwidth(), maxValueLength);
   }, [dataset.data, dataset.unit, rawDataset, scaleX]);
 
+  console.log({ dataset });
+
   return (
     <g>
       {dataset.data.map((d, i) => (
@@ -188,7 +189,6 @@ export const InteractiveBars = ({ barWidth, ...props }) => {
           scaleX={scaleX}
           scaleY={scaleY}
           barWidth={barWidth}
-          className={className}
           blocks={fields[i]}
           addBlocks={(blocks) => addBlocks(i, blocks)}
           removeBlocks={(iBlock) => removeBlocks(i, iBlock)}

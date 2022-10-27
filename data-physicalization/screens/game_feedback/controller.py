@@ -1,13 +1,7 @@
-import time
-import sys
-from threading import Timer
-from functools import reduce
-
 from lib.util import get_error
 
 from screens.game_feedback.view import GameFeedbackView
 from shared_models.field_model import FieldModel
-
 
 
 class GameFeedbackController:

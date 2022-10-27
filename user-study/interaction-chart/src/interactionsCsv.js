@@ -454,10 +454,10 @@ B03,77,block_move,2,
 B03,78,block_move,1,
 B03,82,block_move,1,
 B03,83,button_press,,
-B03,121,dataset_selection,,5
+B03,119,dataset_selection,,5
 B03,121,button_press,,
 B03,140,block_move,1,
-B03,143,block_move,1,
+B03,142,block_move,1,
 B03,143,block_move,1,
 A04,11,dataset_selection,,0
 A04,32,block_move,1,

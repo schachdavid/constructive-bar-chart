@@ -3,13 +3,11 @@ import { scaleLinear } from "d3-scale";
 import { DndProvider } from "react-dnd";
 import MouseBackEnd from "react-dnd-mouse-backend";
 
-import { Chart } from "../MinimalCharts";
 import { Block, Placeholder } from "./Block";
 import { CustomDragLayer } from "./CustomDragLayer";
 import { InteractiveBars } from "./InteractiveBars";
 import { useDimensions } from "../../hooks/useDimensions";
 import { DatasetBlock, DatasetPlaceholder } from "./DatasetBlock";
-import { EMPTY_DATASET } from "../../constants";
 import { Context, ContextProvider } from "./Context";
 import { MainDisplay } from "./MainDisplay";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
@@ -134,16 +132,15 @@ const Content = () => {
             <MainDisplay width={scaledBlockSize} />
           </div>
           <div className={cn.chart} ref={ref}>
-            <Chart
-              getX={(d) => d.label}
-              getY={(d) => d.value}
-              height={height}
-              width={dimensions.width - 50}
-              scaleY={scaleY}
-              data={EMPTY_DATASET.data}
-            >
-              <InteractiveBars barWidth={scaledBlockSize} />
-            </Chart>
+            <svg height={height + 50} width={dimensions.width}>
+              <InteractiveBars
+                barWidth={scaledBlockSize}
+                getX={(d) => d.label}
+                height={height}
+                width={dimensions.width - 50}
+                scaleY={scaleY}
+              />
+            </svg>
           </div>
         </div>
         <button
@@ -209,9 +206,12 @@ const Content = () => {
                 d.hidden ? (
                   <div
                     className={cn.datasetWithLabel}
-                    style={{ position: "relative", top: scaledBlockSize * 1.23 }}
+                    style={{
+                      position: "relative",
+                      top: scaledBlockSize * 1.23,
+                    }}
                   >
-                    <Placeholder barWidth={scaledBlockSize} wrapSvg={true} />
+                    <DatasetPlaceholder barWidth={scaledBlockSize} wrapSvg={true} />
                   </div>
                 ) : (
                   <div className={cn.datasetWithLabel}>

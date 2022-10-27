@@ -27,6 +27,9 @@ export const DatasetPlaceholder = ({ barWidth, className, scaleX, onDrop }) => {
   const xStretch = getXStretch(barWidth);
   const yStretch = getYStretch(barWidth);
 
+
+  console.log("---------", barWidth + xStretch)
+
   return (
     <div ref={drop} className={cn.placeholderContainer}>
       {isOver ? (
@@ -61,7 +64,7 @@ export const DatasetPlaceholder = ({ barWidth, className, scaleX, onDrop }) => {
 };
 
 const getTitleFontsize = (barWidth, length) => {
-  const lineLength = Math.min(30, length/4)
+  const lineLength = Math.min(30, length / 4);
   const fontSize = Math.round((barWidth / lineLength) * FONT_ASPECT_RATIO);
   return Math.min(fontSize, 12);
 };
@@ -116,7 +119,13 @@ export const StaticDatasetBlock = React.forwardRef(
             shapeRendering="crispEdges"
           />
         )}
-        <foreignObject x="0" y="0" width={width} height={height} style={{overflow: 'visible'}}>
+        <foreignObject
+          x="0"
+          y="0"
+          width={width}
+          height={height}
+          style={{ overflow: "visible" }}
+        >
           <div
             className={cn.title}
             style={{
@@ -128,6 +137,8 @@ export const StaticDatasetBlock = React.forwardRef(
         </foreignObject>
       </g>
     );
+
+    console.log(barWidth + xStretch);
 
     return wrapSvg ? (
       <svg
