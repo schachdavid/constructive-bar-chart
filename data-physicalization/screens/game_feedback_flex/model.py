@@ -18,7 +18,7 @@ class FieldModel:
 
     def thread_function(self, is_running, on_change):
         while is_running():
-            (weight, changed) = self.cell.get_weight()
+            weight = self.cell.get_weight()
             weight = round(weight)
             if self.weight != weight:
                 self.weight = weight

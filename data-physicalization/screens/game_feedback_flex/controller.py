@@ -10,7 +10,7 @@ from screens.game_feedback_flex.model import FieldModel
 
 MIN_WEIGHT=61
 MAX_WEIGHT=600
-ERROR_TOLERANCE=3
+ERROR_TOLERANCE=15
 
 
 class GameFeedbackFlexController:
@@ -55,7 +55,7 @@ class GameFeedbackFlexController:
         if min_in_solution > MIN_WEIGHT: 
             return solution
         
-        increase_factor = MIN_WEIGHT/min_in_solution
+        increase_factor = MIN_WEIGHT/min_in_solution if min_in_solution != 0 else 1
         return [increase_factor * item for item in solution]    
         
 

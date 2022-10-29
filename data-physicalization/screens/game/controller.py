@@ -22,8 +22,11 @@ class GameController:
 
         self.button = Button(on_click=self.on_click)
 
-    def on_click(self):       
-        self.router.push("GameFeedback", self.config, self.fields)
+    def on_click(self):
+        if "flex" in self.config:
+            self.router.push("GameFeedbackFlex", self.config)
+        else:
+            self.router.push("GameFeedback", self.config, self.fields)
 
     def cleanup(self, next_screen):
         if next_screen != 'GameFeedback':

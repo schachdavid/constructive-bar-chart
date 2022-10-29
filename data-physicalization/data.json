@@ -355,12 +355,13 @@
   },
   {
     "id": "214254223626",
+    "flex": true,
     "title": "Wie ist das Vermögen in der deutschen Bevölkerung verteilt?",
     "unit": "% allen Vermögens",
     "source": "bpb",
     "data": [
       {
-        "label": "Vermögensschwächste 20% der Bevölkerung",
+        "label": "ärmste 20%",
         "value": 0
       },
       {
@@ -376,7 +377,7 @@
         "value": 19.2
       },
       {
-        "label": "Vermögensstärkste 20% der Bevölkerung",
+        "label": "reichste 20%",
         "value": 75.6
       }
     ],

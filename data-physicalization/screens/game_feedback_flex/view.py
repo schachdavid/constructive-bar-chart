@@ -15,23 +15,23 @@ class GameFeedbackView:
     def draw_progress(self, progress):
         def draw_function(draw, device):
             bar_height = 20
-            draw.rectangle([0, 0, device.width-1, bar_height], outline="white")
-            draw.rectangle([0, 0, device.width * progress, bar_height], fill="white")
+            # draw.rectangle([0, 0, device.width-1, bar_height], outline="white")
+            # draw.rectangle([0, 0, device.width * progress, bar_height], fill="white")
            
             text = str(int(progress*100)) + "%"
             font = get_font(14)
-            w = draw.textsize(text, font=font)[0]
-            available_space = device.width - device.width * progress
-            x = device.width * progress
-            fill = "white"
-            if w + 4 < available_space:
-                x += 5
-            else:
-                fill = "black"
-                x -= w + 2
+            # w = draw.textsize(text, font=font)[0]
+            # available_space = device.width - device.width * progress
+            # x = device.width * progress
+            # fill = "white"
+            # if w + 4 < available_space:
+            #     x += 5
+            # else:
+            #     fill = "black"
+            #     x -= w + 2
                
 
-            draw.text((x, 1), text, fill=fill, font=font)
+            # draw.text((x, 1), text, fill=fill, font=font)
 
             font = get_font(14)
             if progress >= 0.99:
@@ -56,24 +56,25 @@ class GameFeedbackView:
         return wrapped, max_len_row
 
     def draw_solved_field(self, index):
-        def draw_function(draw, device):
-            font_size = min([get_font_size(device.width, self.max_len), 15])
-            font = get_font(font_size)            
-            label_rows = self.wrapped_solved[index]
-            h = draw.textsize("Xg", font=font)[1]
-            for i, row in enumerate(label_rows):
-                y = i * h
-                draw_centered_text(device, draw, font, row, y)
+        pass
+        # def draw_function(draw, device):
+        #     font_size = min([get_font_size(device.width, self.max_len), 15])
+        #     font = get_font(font_size)            
+        #     label_rows = self.wrapped_solved[index]
+        #     h = draw.textsize("Xg", font=font)[1]
+        #     for i, row in enumerate(label_rows):
+        #         y = i * h
+        #         draw_centered_text(device, draw, font, row, y)
 
-            formatted_number = format_number_with_suffix(self.config["data"][index]["value"], short=True)
-            unit = self.config["unit"]
-            text = f"{formatted_number} {unit}"
+        #     formatted_number = format_number_with_suffix(self.config["data"][index]["value"], short=True)
+        #     unit = self.config["unit"]
+        #     text = f"{formatted_number} {unit}"
 
-            font_size = min([get_font_size(device.width, len(text)), 15])            
-            font = get_font(font_size)
-            draw_centered_text(device, draw, font, text, device.height - 20)
+        #     font_size = min([get_font_size(device.width, len(text)), 15])            
+        #     font = get_font(font_size)
+        #     draw_centered_text(device, draw, font, text, device.height - 20)
 
-        DisplayManager.instance().displays[index].draw(draw_function)
+        # DisplayManager.instance().displays[index].draw(draw_function)
 
     def draw_field(self, index, current, solution, is_valid):
         def draw_function(draw, device):
@@ -84,7 +85,6 @@ class GameFeedbackView:
             for i, row in enumerate(label_rows):
                 y = device.height / 2  + baseline + i * h      
                 draw.text((40, y), row, fill="white", font=font)
-                draw.text((40, y+20), f"{current} {solution}", fill="white", font=font)
 
             if is_valid:
                 draw_check_mark(draw, 16, device.height//2, 32)

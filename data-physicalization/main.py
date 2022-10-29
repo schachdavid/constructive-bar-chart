@@ -13,6 +13,7 @@ from screens.scale.controller import ScaleController
 from screens.display_test.controller import DisplayTestController
 from screens.calibration.controller import CalibrationController
 from screens.select_game.controller import SelectGameController
+from screens.game_feedback_flex.controller import GameFeedbackFlexController
 
 from display_manager import DisplayManager
 
@@ -54,6 +55,7 @@ try:
         "SelectGame": SelectGameController,
         "Game": controller_cell_factory(cells, GameController),
         "GameFeedback": GameFeedbackController,
+        "GameFeedbackFlex": controller_cell_factory(cells, GameFeedbackFlexController),
         "DisplayTest": DisplayTestController,
         "Calibration": controller_cell_factory(cells, CalibrationController),
         "Scale": controller_cell_factory(cells, ScaleController),
@@ -72,7 +74,7 @@ try:
             return
         if id == CALIBRATION_TAG_UID:
             router.push("Calibration")
-            return  
+            return
 
         current = next(filter(lambda x: x["id"] == id, config), None)
         if current != None:
