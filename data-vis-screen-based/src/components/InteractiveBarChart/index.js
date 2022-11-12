@@ -11,6 +11,7 @@ import { DatasetBlock, DatasetPlaceholder } from "./DatasetBlock";
 import { Context, ContextProvider } from "./Context";
 import { MainDisplay } from "./MainDisplay";
 import { useWindowWidth } from "../../hooks/useWindowWidth";
+import { ReactComponent as CheckMarkIcon } from "../../static-assets/icons/circle-check-mark.svg";
 
 import cn from "./index.module.css";
 import { fieldsToBlockSums } from "../../utils";
@@ -114,10 +115,12 @@ const Content = () => {
                 height={scaledBlockSize}
                 wrapSvg={true}
                 dataset={dataset}
-                onDrag={() => setDataset(null)}
+                onDrag={() => {
+                  setDataset(null);
+                  setSolution(null);
+                }}
                 onFailedDrop={() => {
                   unhideDataset(dataset.id);
-                  setSolution(null);
                 }}
               />
             ) : (
@@ -150,6 +153,7 @@ const Content = () => {
             setSolution(findClosestSolution(dataset.solutions, fields))
           }
         >
+          <CheckMarkIcon className={cn.checkIcon} />
           Zeige mir die Lösung
         </button>
       </div>
@@ -202,16 +206,21 @@ const Content = () => {
               className={cn.datasets}
               style={{ minHeight: scaledBlockSize * 2 }}
             >
-              {group.datasets.map((d) =>
+              {group.datasets.map((d, i) =>
                 d.hidden ? (
                   <div
                     className={cn.datasetWithLabel}
                     style={{
                       position: "relative",
-                      top: scaledBlockSize * 1.23,
+                      bottom: 47,
                     }}
                   >
-                    <DatasetPlaceholder barWidth={scaledBlockSize} wrapSvg={true} />
+                    <DatasetPlaceholder
+                      barWidth={scaledBlockSize}
+                      wrapSvg={true}
+                      className={cn.dataSetPlaceholder}
+                      onDrop={(item) => unhideDataset(item.id)}
+                    />
                   </div>
                 ) : (
                   <div className={cn.datasetWithLabel}>

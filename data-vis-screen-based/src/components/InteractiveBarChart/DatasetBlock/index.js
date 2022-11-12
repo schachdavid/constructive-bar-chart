@@ -14,7 +14,7 @@ export const DatasetPlaceholder = ({ barWidth, className, scaleX, onDrop }) => {
   const [{ isOver }, drop] = useDrop(
     () => ({
       accept: datasetDndType,
-      drop: (item) => onDrop(item),
+      drop: onDrop,
       collect: (monitor) => ({
         isOver: monitor.isOver(),
         item: monitor.getItem(),
@@ -26,9 +26,6 @@ export const DatasetPlaceholder = ({ barWidth, className, scaleX, onDrop }) => {
   const width = barWidth;
   const xStretch = getXStretch(barWidth);
   const yStretch = getYStretch(barWidth);
-
-
-  console.log("---------", barWidth + xStretch)
 
   return (
     <div ref={drop} className={cn.placeholderContainer}>
@@ -137,8 +134,6 @@ export const StaticDatasetBlock = React.forwardRef(
         </foreignObject>
       </g>
     );
-
-    console.log(barWidth + xStretch);
 
     return wrapSvg ? (
       <svg
