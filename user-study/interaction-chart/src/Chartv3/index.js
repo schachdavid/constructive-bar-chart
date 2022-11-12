@@ -6,10 +6,6 @@ import { max } from "d3-array";
 function Chart() {
   const data = useData();
 
-  console.log(
-    data?.map((d) => ({ id: d.id, numInteractions: d.numInteractions }))
-  );
-
   var xScale = useMemo(() => {
     if (!data) return;
     return scaleLinear()

@@ -35,9 +35,6 @@ export function useData() {
 
     const ids = [...new Set(data.map((d) => d.id))];
 
-
-    console.log({ids})
-
     setData(
       ids
         .map((id) => {
