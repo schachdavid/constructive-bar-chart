@@ -135,7 +135,11 @@ const Content = () => {
             <MainDisplay width={scaledBlockSize} />
           </div>
           <div className={cn.chart} ref={ref}>
-            <svg height={height + 50} width={dimensions.width}>
+            <svg
+              height={height + 50}
+              width={dimensions.width}
+              style={{ position: "absolute" }}
+            >
               <InteractiveBars
                 barWidth={scaledBlockSize}
                 getX={(d) => d.label}

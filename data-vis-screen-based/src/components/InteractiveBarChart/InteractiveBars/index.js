@@ -178,8 +178,6 @@ export const InteractiveBars = ({
     return getMaxFontSizeForWidth(scaleX.bandwidth(), maxValueLength);
   }, [dataset.data, dataset.unit, rawDataset, scaleX]);
 
-  console.log({ dataset });
-
   return (
     <g>
       {dataset.data.map((d, i) => (

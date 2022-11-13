@@ -1,11 +1,12 @@
 import { useDrag } from "react-dnd";
-import React from "react";
+import React, { useState } from "react";
 import { useDrop } from "react-dnd";
 
 import { datasetDndType } from "../config";
 import cn from "./index.module.css";
 import { cx } from "../../../utils";
-import { BLOCK_PADDING, FONT_ASPECT_RATIO } from "../../../constants";
+import { BLOCK_PADDING } from "../../../constants";
+import useFitText from "use-fit-text";
 
 const getXStretch = (barWidth) => barWidth / 5;
 const getYStretch = (barWidth) => barWidth / 4;
@@ -60,10 +61,26 @@ export const DatasetPlaceholder = ({ barWidth, className, scaleX, onDrop }) => {
   );
 };
 
-const getTitleFontsize = (barWidth, length) => {
-  const lineLength = Math.min(30, length / 4);
-  const fontSize = Math.round((barWidth / lineLength) * FONT_ASPECT_RATIO);
-  return Math.min(fontSize, 12);
+const Title = ({ title }) => {
+  const [textIsVisible, setTextIsVisible] = useState(false);
+
+  const { fontSize, ref: titleRef } = useFitText({
+    onStart: () => setTextIsVisible(false),
+    onFinish: () => setTextIsVisible(true),
+  });
+
+  return (
+    <div
+      ref={titleRef}
+      className={cn.title}
+      style={{
+        opacity: textIsVisible ? 100 : 0,
+        fontSize: fontSize,
+      }}
+    >
+      {title}
+    </div>
+  );
 };
 
 export const StaticDatasetBlock = React.forwardRef(
@@ -84,6 +101,8 @@ export const StaticDatasetBlock = React.forwardRef(
     const height = rawHeight - BLOCK_PADDING * 2;
     const xStretch = getXStretch(barWidth);
     const yStretch = getYStretch(barWidth);
+
+    if (width < 0 || height < 0) return null;
 
     const content = (
       <g
@@ -123,14 +142,7 @@ export const StaticDatasetBlock = React.forwardRef(
           height={height}
           style={{ overflow: "visible" }}
         >
-          <div
-            className={cn.title}
-            style={{
-              fontSize: getTitleFontsize(width, dataset?.title.length) + "px",
-            }}
-          >
-            {dataset?.title}
-          </div>
+          <Title title={dataset?.title} height={height} />
         </foreignObject>
       </g>
     );

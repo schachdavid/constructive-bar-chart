@@ -1,8 +1,10 @@
 import { useEffect, useState, useCallback } from "react";
 
-import debounce from 'debounce';
+import debounce from "debounce";
 
-export const useDimensions = function (initialSize = {width: null, height: null}) {
+export const useDimensions = function (
+  initialSize = { width: null, height: null }
+) {
   const [size, setSize] = useState(initialSize);
   const [node, setNode] = useState(null);
 
@@ -34,16 +36,14 @@ export const useDimensions = function (initialSize = {width: null, height: null}
 
     handleResize();
 
-    window.addEventListener('resize', debouncedHandleResize);
-    window.addEventListener('orientationchange', debouncedHandleResize);
+    window.addEventListener("resize", debouncedHandleResize);
+    window.addEventListener("orientationchange", debouncedHandleResize);
 
     return () => {
-      window.removeEventListener('resize', debouncedHandleResize);
-      window.removeEventListener('orientationchange', debouncedHandleResize);
+      window.removeEventListener("resize", debouncedHandleResize);
+      window.removeEventListener("orientationchange", debouncedHandleResize);
     };
   }, [node]);
 
   return [ref, size, node];
 };
-
-
