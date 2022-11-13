@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/constructive-bar-chart/static/css/main.1f9ad8f8.chunk.css",
-    "main.js": "/constructive-bar-chart/static/js/main.49ce9621.chunk.js",
-    "main.js.map": "/constructive-bar-chart/static/js/main.49ce9621.chunk.js.map",
-    "runtime-main.js": "/constructive-bar-chart/static/js/runtime-main.73e6ef00.js",
-    "runtime-main.js.map": "/constructive-bar-chart/static/js/runtime-main.73e6ef00.js.map",
-    "static/js/2.857db657.chunk.js": "/constructive-bar-chart/static/js/2.857db657.chunk.js",
-    "static/js/2.857db657.chunk.js.map": "/constructive-bar-chart/static/js/2.857db657.chunk.js.map",
-    "static/js/3.103ddc1f.chunk.js": "/constructive-bar-chart/static/js/3.103ddc1f.chunk.js",
-    "static/js/3.103ddc1f.chunk.js.map": "/constructive-bar-chart/static/js/3.103ddc1f.chunk.js.map",
+    "main.css": "/constructive-bar-chart/static/css/main.902fcd6a.chunk.css",
+    "main.js": "/constructive-bar-chart/static/js/main.09432c73.chunk.js",
+    "main.js.map": "/constructive-bar-chart/static/js/main.09432c73.chunk.js.map",
+    "runtime-main.js": "/constructive-bar-chart/static/js/runtime-main.dbfc13a7.js",
+    "runtime-main.js.map": "/constructive-bar-chart/static/js/runtime-main.dbfc13a7.js.map",
+    "static/js/2.8316fedc.chunk.js": "/constructive-bar-chart/static/js/2.8316fedc.chunk.js",
+    "static/js/2.8316fedc.chunk.js.map": "/constructive-bar-chart/static/js/2.8316fedc.chunk.js.map",
+    "static/js/3.2aa113c3.chunk.js": "/constructive-bar-chart/static/js/3.2aa113c3.chunk.js",
+    "static/js/3.2aa113c3.chunk.js.map": "/constructive-bar-chart/static/js/3.2aa113c3.chunk.js.map",
     "index.html": "/constructive-bar-chart/index.html",
-    "static/css/main.1f9ad8f8.chunk.css.map": "/constructive-bar-chart/static/css/main.1f9ad8f8.chunk.css.map",
-    "static/js/2.857db657.chunk.js.LICENSE.txt": "/constructive-bar-chart/static/js/2.857db657.chunk.js.LICENSE.txt",
+    "static/css/main.902fcd6a.chunk.css.map": "/constructive-bar-chart/static/css/main.902fcd6a.chunk.css.map",
+    "static/js/2.8316fedc.chunk.js.LICENSE.txt": "/constructive-bar-chart/static/js/2.8316fedc.chunk.js.LICENSE.txt",
     "static/media/age-groups.e2c4f16b.svg": "/constructive-bar-chart/static/media/age-groups.e2c4f16b.svg",
     "static/media/chevron-down.89bc78bb.svg": "/constructive-bar-chart/static/media/chevron-down.89bc78bb.svg",
     "static/media/chevron-up.43cdd991.svg": "/constructive-bar-chart/static/media/chevron-up.43cdd991.svg",
@@ -21,9 +21,9 @@
     "static/media/virus.8e0dd785.svg": "/constructive-bar-chart/static/media/virus.8e0dd785.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.73e6ef00.js",
-    "static/js/2.857db657.chunk.js",
-    "static/css/main.1f9ad8f8.chunk.css",
-    "static/js/main.49ce9621.chunk.js"
+    "static/js/runtime-main.dbfc13a7.js",
+    "static/js/2.8316fedc.chunk.js",
+    "static/css/main.902fcd6a.chunk.css",
+    "static/js/main.09432c73.chunk.js"
   ]
 }
