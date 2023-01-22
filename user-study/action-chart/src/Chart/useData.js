@@ -35,9 +35,6 @@ export function useData() {
 
     const ids = [...new Set(data.map((d) => d.id))];
 
-
-    console.log({ids})
-
     setData(
       ids
         .map((id) => {
@@ -56,16 +53,7 @@ export function useData() {
           const correct = getActionsOfType(series, "correct");
           const experiment = getActionsOfType(series, "experiment");
           const other = getActionsOfType(series, "other");
-
-          console.log({
-            understand: getTotalTime(understand),
-            read: getTotalTime(read),
-            guess: getTotalTime(guess),
-            correct: getTotalTime(correct),
-            experiment: getTotalTime(experiment),
-            other: getTotalTime(other),
-          });
-
+      
           return {
             id,
             series,

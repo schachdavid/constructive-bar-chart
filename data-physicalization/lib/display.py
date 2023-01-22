@@ -6,7 +6,7 @@ class Display:
     def __init__(self, port, multiplexer):        
         self.port = port  
         self.multiplexer = multiplexer      
-        self.multiplexer.put(1, self.port, lambda should_cancel: self.init_using_mux())
+        self.multiplexer.put(1, self.port, lambda _: self.init_using_mux())
 
         while not hasattr(self, 'device'):
             pass
@@ -30,4 +30,4 @@ class Display:
             
 
     def cleanup(self):
-        self.multiplexer.put(1, self.port, lambda should_cancel: self.device.clear())        
+        self.multiplexer.put(1, self.port, lambda _: self.device.clear())        

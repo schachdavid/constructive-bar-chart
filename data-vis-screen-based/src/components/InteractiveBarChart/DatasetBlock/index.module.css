@@ -27,15 +27,14 @@
 
 .title {
   color: white;
-  text-align: center;
-  display: flex;
-  align-items: center;
   height: 100%;
   width: 100%;
+  hyphens: auto;
+
+  text-align: center;  
   user-select: none;
   padding: 0.4rem;
   box-sizing: border-box;
-  hyphens: auto;
   background-color: #6298a4;
 }
 
