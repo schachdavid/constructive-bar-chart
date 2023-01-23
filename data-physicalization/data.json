@@ -415,7 +415,7 @@
   {
     "id": "1473021857110",
     "title": "Woraus wurde 2005 in Deutschland der Strom erzeugt?",
-    "unit": "kwH",
+    "unit": "TWh",
     "source": "AGEB",
     "data": [
       {
@@ -473,7 +473,7 @@
   {
     "id": "201814251184",
     "title": "Woraus wurde 2021 in Deutschland der Strom erzeugt?",
-    "unit": "kwH",
+    "unit": "TWh",
     "source": "AGEB",
     "data": [
       {
